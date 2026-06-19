@@ -6,8 +6,8 @@ import { Container } from "../../components/ui/Container";
 import { PageHeader } from "../../components/ui/PageHeader";
 import { EmptyState } from "../../components/ui/EmptyState";
 import { Button } from "../../components/ui/Button";
+import { StatCard } from "../../components/ui/StatCard";
 
-import { OverviewCard } from "../../components/dashboard/OverviewCard";
 import { InsightCard } from "../../components/dashboard/InsightCard";
 import { WarningSubjectsCard } from "../../components/dashboard/WarningSubjectsCard";
 import { RecentSubjectsCard } from "../../components/dashboard/RecentSubjectsCard";
@@ -100,7 +100,7 @@ export default function DashboardPage() {
           title="Nothing here yet"
           description="Add your subjects in Attendance to start seeing your overview here."
           action={
-            <Button onClick={() => navigate("/attendance")}>
+            <Button onClick={() => navigate("/app/attendance")}>
               <CheckSquare className="h-4 w-4 mr-2" />
               Go to Attendance
             </Button>
@@ -139,10 +139,21 @@ export default function DashboardPage() {
     <Container>
       <PageHeader title="Dashboard" description="Your student overview." />
 
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        {overviewStats.map((stat, i) => (
+          <StatCard
+            key={i}
+            title={stat.label}
+            value={stat.value}
+            icon={stat.icon}
+            delay={i * 0.1}
+          />
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Left column — full width on mobile, 2/3 on desktop */}
         <div className="flex flex-col gap-6 lg:col-span-2">
-          <OverviewCard stats={overviewStats} />
           <InsightCard insights={insights} />
           <WarningSubjectsCard subjects={subjects} />
         </div>

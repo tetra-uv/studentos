@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { LayoutDashboard, CheckSquare, FileText, Activity, Clock } from "lucide-react";
 import { clsx } from "clsx";
+import { APP_ROUTES } from "../../config/routes";
 
 const NAV_ITEMS = [
-  { name: "Home", path: "/", icon: LayoutDashboard },
-  { name: "Attend", path: "/attendance", icon: CheckSquare },
-  { name: "Tasks", path: "/assignments", icon: FileText },
-  { name: "Habits", path: "/habits", icon: Activity },
-  { name: "Timer", path: "/pomodoro", icon: Clock },
+  { name: "Home", path: APP_ROUTES.DASHBOARD, icon: LayoutDashboard },
+  { name: "Attend", path: APP_ROUTES.ATTENDANCE, icon: CheckSquare },
+  { name: "Tasks", path: APP_ROUTES.ASSIGNMENTS, icon: FileText },
+  { name: "Habits", path: APP_ROUTES.HABITS, icon: Activity },
+  { name: "Timer", path: APP_ROUTES.POMODORO, icon: Clock },
 ];
 
 export function BottomNav() {
@@ -19,7 +20,7 @@ export function BottomNav() {
           to={item.path}
           className={({ isActive }) =>
             clsx(
-              "flex flex-col items-center justify-center gap-1 rounded-lg px-3 py-1.5 min-w-[64px] transition-colors",
+              "flex flex-col items-center justify-center gap-1 rounded-lg px-3 py-1.5 min-w-[64px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400",
               isActive
                 ? "text-slate-900 dark:text-slate-50"
                 : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
