@@ -29,13 +29,13 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
             <Link
               to={APP_ROUTES.DASHBOARD}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-xl"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl border-2 dark:border border-border-strong bg-primary text-primary-foreground font-bold hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(15,23,42,1)] dark:hover:shadow-none transition-all flex items-center justify-center gap-2"
             >
-              Start for free
+              Start using StudentOS
             </Link>
             <Link
               to={PUBLIC_ROUTES.FEATURES}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-card text-foreground border border-border font-semibold hover:bg-muted transition-colors"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl border-2 dark:border border-border-strong bg-card text-foreground font-bold hover:bg-muted transition-colors flex items-center justify-center gap-2"
             >
               Explore features
             </Link>
@@ -45,18 +45,57 @@ export function Hero() {
         {/* Device Showcase */}
         <AnimatedSection direction="up" delay={0.2} className="mt-16 mx-auto px-4 sm:px-0">
           <DeviceFrame type="desktop">
-            <div className="w-full h-full bg-muted flex items-center justify-center border-t border-border">
-               {/* Minimal abstract representation of the app inside the frame */}
-               <div className="w-full max-w-3xl h-3/4 border border-border rounded-2xl bg-card shadow-sm flex overflow-hidden">
-                 <div className="w-48 h-full border-r border-border bg-background hidden md:block"></div>
-                 <div className="flex-1 p-8 flex flex-col gap-6">
-                    <div className="w-1/3 h-8 bg-muted rounded-lg border border-border"></div>
-                    <div className="grid grid-cols-3 gap-4">
-                      <div className="h-24 bg-muted rounded-xl border border-border"></div>
-                      <div className="h-24 bg-muted rounded-xl border border-border"></div>
-                      <div className="h-24 bg-muted rounded-xl border border-border"></div>
+            <div className="w-full h-full bg-background flex flex-col border-t-2 dark:border-t border-border-strong">
+               {/* App Header */}
+               <div className="h-14 border-b-2 dark:border-b border-border-strong bg-card flex items-center px-6 gap-4">
+                 <div className="flex gap-2">
+                   <div className="w-3 h-3 rounded-full bg-rose-500 border border-border-strong" />
+                   <div className="w-3 h-3 rounded-full bg-amber-500 border border-border-strong" />
+                   <div className="w-3 h-3 rounded-full bg-emerald-500 border border-border-strong" />
+                 </div>
+                 <div className="h-6 w-64 bg-muted border border-border-strong rounded-md mx-auto" />
+               </div>
+               
+               {/* App Body */}
+               <div className="flex-1 flex overflow-hidden">
+                 {/* Sidebar */}
+                 <div className="w-64 h-full border-r-2 dark:border-r border-border-strong bg-card hidden md:flex flex-col p-4 gap-2">
+                   <div className="h-8 bg-muted rounded border border-border-strong mb-4" />
+                   <div className="h-10 bg-primary/10 border border-primary/20 rounded-lg" />
+                   <div className="h-10 bg-muted/50 rounded-lg" />
+                   <div className="h-10 bg-muted/50 rounded-lg" />
+                   <div className="h-10 bg-muted/50 rounded-lg" />
+                 </div>
+                 
+                 {/* Main Content */}
+                 <div className="flex-1 bg-background p-8 flex flex-col gap-8">
+                    <div className="flex justify-between items-end">
+                      <div className="space-y-2">
+                        <div className="h-8 w-48 bg-foreground rounded-lg" />
+                        <div className="h-4 w-64 bg-muted-foreground/30 rounded" />
+                      </div>
+                      <div className="h-10 w-32 bg-primary rounded-xl" />
                     </div>
-                    <div className="w-full flex-1 bg-muted rounded-xl border border-border"></div>
+                    
+                    <div className="grid grid-cols-3 gap-6">
+                      <div className="h-32 bg-card rounded-2xl border-2 dark:border border-border-strong p-4 flex flex-col justify-between">
+                         <div className="h-10 w-10 bg-indigo-500/20 rounded-lg border border-indigo-500/30" />
+                         <div className="h-4 w-24 bg-muted-foreground/30 rounded" />
+                      </div>
+                      <div className="h-32 bg-card rounded-2xl border-2 dark:border border-border-strong p-4 flex flex-col justify-between">
+                         <div className="h-10 w-10 bg-emerald-500/20 rounded-lg border border-emerald-500/30" />
+                         <div className="h-4 w-24 bg-muted-foreground/30 rounded" />
+                      </div>
+                      <div className="h-32 bg-card rounded-2xl border-2 dark:border border-border-strong p-4 flex flex-col justify-between">
+                         <div className="h-10 w-10 bg-amber-500/20 rounded-lg border border-amber-500/30" />
+                         <div className="h-4 w-24 bg-muted-foreground/30 rounded" />
+                      </div>
+                    </div>
+                    
+                    <div className="w-full flex-1 bg-card rounded-2xl border-2 dark:border border-border-strong flex flex-col p-6 gap-4">
+                       <div className="h-6 w-48 bg-foreground/80 rounded" />
+                       <div className="flex-1 bg-muted/30 rounded-xl border border-border-strong" />
+                    </div>
                  </div>
                </div>
             </div>

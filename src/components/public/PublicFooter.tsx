@@ -54,9 +54,13 @@ export function PublicFooter() {
           ))}
         </div>
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-sm text-muted-foreground">
+             <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+             <div className="hidden md:block w-1 h-1 rounded-full bg-border-strong" />
+             <p>Built by students, with React & TypeScript.</p>
+             <div className="hidden md:block w-1 h-1 rounded-full bg-border-strong" />
+             <p className="font-mono text-xs">v1.0.0-beta</p>
+          </div>
           <div className="flex gap-4">
             <a href={siteConfig.links.twitter} className="text-muted-foreground hover:text-foreground transition-colors" target="_blank" rel="noreferrer">
               Twitter

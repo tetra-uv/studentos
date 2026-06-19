@@ -19,7 +19,7 @@ export function BentoCard({ title, description, icon, children, className, delay
       viewport={{ once: true, margin: "-10%" }}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
       className={clsx(
-        "group relative flex flex-col overflow-hidden rounded-3xl border border-border-strong bg-card hover:bg-accent/50 transition-all duration-300 shadow-sm hover:shadow-md",
+        "group relative flex flex-col overflow-hidden rounded-3xl border-2 dark:border border-border-strong bg-card hover:bg-accent/50 transition-all duration-300 shadow-sm hover:shadow-md",
         className
       )}
     >
