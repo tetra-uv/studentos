@@ -7,11 +7,11 @@ interface SectionHeaderProps {
 export function SectionHeader({ title, description, align = "center" }: SectionHeaderProps) {
   return (
     <div className={`flex flex-col gap-3 ${align === "center" ? "items-center text-center mx-auto max-w-2xl" : "items-start max-w-2xl"}`}>
-      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
+      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
         {title}
       </h2>
       {description && (
-        <p className="text-lg text-slate-600 dark:text-slate-400">
+        <p className="text-lg text-muted-foreground leading-relaxed">
           {description}
         </p>
       )}

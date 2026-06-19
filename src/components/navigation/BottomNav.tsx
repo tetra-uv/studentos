@@ -22,8 +22,8 @@ export function BottomNav() {
             clsx(
               "flex flex-col items-center justify-center gap-1 rounded-lg px-3 py-1.5 min-w-[64px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400",
               isActive
-                ? "text-slate-900 dark:text-slate-50"
-                : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
+                ? "text-muted-foreground"
+                : "text-muted-foreground hover:text-muted-foreground dark:hover:text-muted-foreground"
             )
           }
         >

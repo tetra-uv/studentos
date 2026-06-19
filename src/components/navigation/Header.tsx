@@ -13,7 +13,7 @@ export function Header() {
         <div className="flex items-center gap-3 md:hidden">
           <button
             onClick={() => setIsDrawerOpen(true)}
-            className="p-2 -ml-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+            className="p-2 -ml-2 text-muted-foreground hover:text-muted-foreground dark:hover:text-muted-foreground rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
             aria-label="Open Menu"
           >
             <Menu className="h-5 w-5" />
@@ -25,7 +25,7 @@ export function Header() {
         </div>
         <div className="ml-auto flex items-center gap-4">
           <button
-            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-500 dark:text-slate-400 text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-muted text-muted-foreground text-sm hover:bg-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
             onClick={() => {
               const event = new KeyboardEvent('keydown', { key: 'k', metaKey: true });
               document.dispatchEvent(event);
@@ -34,13 +34,13 @@ export function Header() {
           >
             <Search className="h-4 w-4" />
             <span>Search...</span>
-            <kbd className="hidden md:inline-flex items-center gap-1 font-sans text-xs border border-slate-200 dark:border-slate-700 rounded px-1.5 ml-2 bg-white dark:bg-slate-800">
+            <kbd className="hidden md:inline-flex items-center gap-1 font-sans text-xs border border-border rounded px-1.5 ml-2 bg-card">
               <span className="text-[10px]">⌘</span>K
             </kbd>
           </button>
           
           {/* Actions placeholder */}
-          <div className="h-8 w-8 rounded-full bg-slate-100 dark:bg-slate-800" />
+          <div className="h-8 w-8 rounded-full bg-muted" />
         </div>
       </header>
       

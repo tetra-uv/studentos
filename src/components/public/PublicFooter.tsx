@@ -22,20 +22,20 @@ const footerLinks = {
 
 export function PublicFooter() {
   return (
-    <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-12 md:py-16">
+    <footer className="border-t border-border bg-background py-12 md:py-16">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           <div className="col-span-2">
             <Link to={PUBLIC_ROUTES.HOME} className="hover:opacity-80 transition-opacity inline-block">
               <Logo />
             </Link>
-            <p className="mt-4 text-slate-600 dark:text-slate-400 max-w-sm text-sm leading-relaxed">
+            <p className="mt-4 text-muted-foreground max-w-sm text-sm leading-relaxed">
               {siteConfig.description}
             </p>
           </div>
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="font-semibold text-slate-900 dark:text-slate-50 mb-4">
+              <h4 className="font-semibold text-foreground mb-4">
                 {category}
               </h4>
               <ul className="space-y-3">
@@ -43,7 +43,7 @@ export function PublicFooter() {
                   <li key={link.name}>
                     <Link
                       to={link.href}
-                      className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 transition-colors text-sm"
+                      className="text-muted-foreground hover:text-foreground transition-colors text-sm"
                     >
                       {link.name}
                     </Link>
@@ -53,15 +53,15 @@ export function PublicFooter() {
             </div>
           ))}
         </div>
-        <div className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-slate-500 dark:text-slate-500 text-sm">
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <a href={siteConfig.links.twitter} className="text-slate-500 hover:text-slate-900 dark:hover:text-slate-50 transition-colors" target="_blank" rel="noreferrer">
+            <a href={siteConfig.links.twitter} className="text-muted-foreground hover:text-foreground transition-colors" target="_blank" rel="noreferrer">
               Twitter
             </a>
-            <a href={siteConfig.links.github} className="text-slate-500 hover:text-slate-900 dark:hover:text-slate-50 transition-colors" target="_blank" rel="noreferrer">
+            <a href={siteConfig.links.github} className="text-muted-foreground hover:text-foreground transition-colors" target="_blank" rel="noreferrer">
               GitHub
             </a>
           </div>

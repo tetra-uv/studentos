@@ -9,19 +9,19 @@ interface ButtonProps extends Omit<HTMLMotionProps<"button">, "ref"> {
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
-    const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+    const baseStyles = "inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]";
     
     const variants = {
-      primary: "bg-slate-900 text-white hover:bg-slate-800 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-200",
-      secondary: "bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700",
-      outline: "border border-slate-200 text-slate-900 hover:bg-slate-100 dark:border-slate-800 dark:text-slate-50 dark:hover:bg-slate-800",
-      ghost: "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800",
+      primary: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md ring-1 ring-inset ring-primary/20",
+      secondary: "bg-muted text-foreground hover:bg-muted/80 ring-1 ring-inset ring-border/50",
+      outline: "border border-border-strong text-foreground hover:bg-accent",
+      ghost: "text-muted-foreground hover:text-foreground hover:bg-accent",
     };
 
     const sizes = {
-      sm: "h-8 px-3 text-xs",
+      sm: "h-8 px-3 text-xs rounded-lg",
       md: "h-10 px-4 text-sm",
-      lg: "h-12 px-6 text-base",
+      lg: "h-12 px-6 text-base rounded-2xl",
     };
 
     return (

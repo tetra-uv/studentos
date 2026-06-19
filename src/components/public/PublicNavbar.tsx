@@ -13,7 +13,7 @@ export function PublicNavbar() {
   const location = useLocation();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Link to={PUBLIC_ROUTES.HOME} className="hover:opacity-80 transition-opacity">
@@ -24,17 +24,17 @@ export function PublicNavbar() {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`text-sm font-medium transition-colors hover:text-slate-900 dark:hover:text-slate-50 relative py-1 ${
+                className={`text-sm font-medium transition-colors hover:text-foreground relative py-1 ${
                   location.pathname === link.href
-                    ? "text-slate-900 dark:text-slate-50"
-                    : "text-slate-600 dark:text-slate-400"
+                    ? "text-foreground"
+                    : "text-muted-foreground"
                 }`}
               >
                 {link.name}
                 {location.pathname === link.href && (
                   <motion.div
                     layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-slate-900 dark:bg-slate-50 rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground rounded-full"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
@@ -45,7 +45,7 @@ export function PublicNavbar() {
         <div className="flex items-center gap-4">
           <Link
             to={APP_ROUTES.DASHBOARD}
-            className="text-sm font-medium px-4 py-2 rounded-full bg-slate-900 text-white dark:bg-slate-50 dark:text-slate-900 hover:scale-105 transition-transform active:scale-95"
+            className="text-sm font-medium px-4 py-2 rounded-full bg-primary text-primary-foreground hover:scale-105 transition-transform active:scale-95 shadow-sm"
           >
             Go to App
           </Link>

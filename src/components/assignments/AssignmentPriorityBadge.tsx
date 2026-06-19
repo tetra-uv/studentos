@@ -10,7 +10,7 @@ const PRIORITY_LABELS: Record<AssignmentPriority, string> = {
 
 const PRIORITY_STYLES: Record<AssignmentPriority, string> = {
   [AssignmentPriority.LOW]:
-    "bg-slate-100 text-slate-600 border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700",
+    "bg-slate-100 text-muted-foreground border-slate-200 dark:bg-slate-800 dark:text-muted-foreground dark:border-slate-700",
   [AssignmentPriority.MEDIUM]:
     "bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800",
   [AssignmentPriority.HIGH]:

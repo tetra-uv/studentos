@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import type { HTMLAttributes, ReactNode } from "react";
 import { clsx } from "clsx";
 import { Text } from "./Text";
+import { motion } from "framer-motion";
 
 interface EmptyStateProps extends HTMLAttributes<HTMLDivElement> {
   icon: ReactNode;
@@ -12,25 +13,28 @@ interface EmptyStateProps extends HTMLAttributes<HTMLDivElement> {
 
 export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
   ({ icon, title, description, action, className, ...props }, ref) => (
-    <div
-      ref={ref}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      ref={ref as any}
       className={clsx(
-        "flex min-h-[300px] flex-col items-center justify-center rounded-xl border border-dashed border-slate-200 p-8 text-center dark:border-slate-800",
+        "flex min-h-[300px] flex-col items-center justify-center rounded-3xl border border-dashed border-slate-200/60 bg-slate-50/50 p-8 text-center dark:border-slate-800/60 dark:bg-slate-900/30 shadow-sm",
         className
       )}
-      {...props}
+      {...(props as any)}
     >
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-500 dark:bg-indigo-500/10 dark:text-indigo-400 ring-1 ring-inset ring-indigo-500/10 shadow-sm">
         {icon}
       </div>
-      <Text variant="h3" className="mb-1">
+      <Text variant="h3" className="mb-2 text-slate-900 dark:text-slate-50 font-semibold tracking-tight text-xl">
         {title}
       </Text>
-      <Text variant="muted" className="mb-6 max-w-sm">
+      <Text variant="muted" className="mb-8 max-w-sm leading-relaxed">
         {description}
       </Text>
       {action && <div>{action}</div>}
-    </div>
+    </motion.div>
   )
 );
 EmptyState.displayName = "EmptyState";

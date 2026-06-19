@@ -13,7 +13,7 @@ const MODES: { value: PomodoroMode; label: string }[] = [
 
 export function ModeSelector({ mode, onChange }: ModeSelectorProps) {
   return (
-    <div className="flex items-center gap-1 rounded-full bg-slate-100 dark:bg-slate-800 p-1" role="tablist" aria-label="Timer mode">
+    <div className="flex items-center gap-1 rounded-full bg-muted p-1" role="tablist" aria-label="Timer mode">
       {MODES.map((m) => (
         <button
           key={m.value}
@@ -21,10 +21,10 @@ export function ModeSelector({ mode, onChange }: ModeSelectorProps) {
           aria-selected={mode === m.value}
           onClick={() => onChange(m.value)}
           className={clsx(
-            "flex-1 rounded-full px-5 py-1.5 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-slate-400",
+            "flex-1 rounded-full px-5 py-1.5 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-primary",
             mode === m.value
-              ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-50 shadow-sm"
-              : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"
+              ? "bg-card text-muted-foreground shadow-sm"
+              : "text-muted-foreground hover:text-muted-foreground dark:hover:text-muted-foreground"
           )}
         >
           {m.label}

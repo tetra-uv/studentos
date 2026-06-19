@@ -1,13 +1,16 @@
+import { Container } from "../../components/ui/Container";
 import { SectionHeader } from "../../components/public/SectionHeader";
 import { FeatureCard } from "../../components/public/FeatureCard";
 import { BookOpen, CheckSquare, Coffee, Clock } from "lucide-react";
+import { Seo } from "../../components/seo/Seo";
 
 export default function FeaturesPage() {
   return (
-    <div className="container mx-auto px-4 sm:px-6 py-24 pb-32">
+    <Container className="py-24">
+      <Seo title="Features" description="Explore everything StudentOS has to offer." />
       <SectionHeader 
-        title="Features"
-        description="Everything you need to manage your academic life, built directly into one fast and reliable workspace."
+        title="Everything you need"
+        description="A complete suite of tools designed specifically for students."
       />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
         <FeatureCard 
@@ -31,6 +34,6 @@ export default function FeaturesPage() {
           icon={<Clock className="w-6 h-6" />}
         />
       </div>
-    </div>
+    </Container>
   );
 }

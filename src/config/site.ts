@@ -1,6 +1,8 @@
 export const siteConfig = {
   name: "StudentOS",
-  description: "The Academic Operating System for modern students.",
+  tagline: "The Operating System for Students",
+  description: "The Academic Operating System for modern students. Manage attendance, assignments, and habits beautifully.",
+  version: "1.0.0",
   url: "https://studentos.com",
   links: {
     twitter: "https://twitter.com/studentos",

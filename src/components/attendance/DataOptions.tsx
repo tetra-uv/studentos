@@ -55,7 +55,7 @@ export function DataOptions({ onImportError, onImportSuccess }: DataOptionsProps
   };
 
   return (
-    <Card className="p-6 mt-12 bg-slate-50 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800">
+    <Card className="p-6 mt-12 bg-muted border-border">
       <div className="flex flex-col md:flex-row gap-6 md:items-start justify-between">
         
         <div className="flex-1">
@@ -63,7 +63,7 @@ export function DataOptions({ onImportError, onImportSuccess }: DataOptionsProps
           <Text variant="muted" className="mb-4">Export your data to a JSON file or import from a previous backup. This happens entirely locally.</Text>
           
           <div className="flex flex-wrap items-center gap-3">
-            <Button variant="outline" onClick={handleExport} className="bg-white dark:bg-slate-950">
+            <Button variant="outline" onClick={handleExport} className="bg-card">
               <Download className="h-4 w-4 mr-2" />
               Export JSON
             </Button>
@@ -76,14 +76,14 @@ export function DataOptions({ onImportError, onImportSuccess }: DataOptionsProps
               onChange={handleFileChange}
               tabIndex={-1}
             />
-            <Button variant="outline" onClick={handleImportClick} className="bg-white dark:bg-slate-950">
+            <Button variant="outline" onClick={handleImportClick} className="bg-card">
               <Upload className="h-4 w-4 mr-2" />
               Import JSON
             </Button>
           </div>
         </div>
 
-        <div className="flex-1 md:max-w-xs pt-4 border-t border-slate-200 dark:border-slate-800 md:pt-0 md:border-t-0 md:border-l md:pl-6">
+        <div className="flex-1 md:max-w-xs pt-4 border-t border-border md:pt-0 md:border-t-0 md:border-l md:pl-6">
           <div className="flex items-center gap-2 mb-1">
             <AlertTriangle className="h-4 w-4 text-red-500" />
             <Text variant="h3" className="text-red-600 dark:text-red-400">Danger Zone</Text>
@@ -100,7 +100,7 @@ export function DataOptions({ onImportError, onImportSuccess }: DataOptionsProps
             </Button>
           ) : (
             <form onSubmit={handleResetSubmit} className="flex flex-col gap-2">
-              <Text className="text-xs font-medium text-slate-700 dark:text-slate-300">
+              <Text className="text-xs font-medium text-muted-foreground">
                 Type <span className="font-bold text-red-600 dark:text-red-400 select-all">RESET</span> to confirm:
               </Text>
               <div className="flex gap-2">

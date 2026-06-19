@@ -23,16 +23,16 @@ export function SelectRow({ label, description, value, onChange, options, disabl
       )}
     >
       <div className="flex flex-col min-w-0 flex-1">
-        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{label}</span>
+        <span className="text-sm font-medium text-muted-foreground">{label}</span>
         {description && (
-          <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{description}</span>
+          <span className="text-xs text-muted-foreground mt-0.5">{description}</span>
         )}
       </div>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
-        className="w-full sm:w-auto min-w-[120px] rounded-lg border border-slate-300 px-3 py-1.5 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400"
+        className="w-full sm:w-auto min-w-[120px] rounded-lg border border-slate-300 px-3 py-1.5 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
       >
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>

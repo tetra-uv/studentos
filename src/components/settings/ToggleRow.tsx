@@ -17,9 +17,9 @@ export function ToggleRow({ label, description, checked, onChange, disabled }: T
       )}
     >
       <div className="flex flex-col min-w-0 flex-1">
-        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{label}</span>
+        <span className="text-sm font-medium text-muted-foreground">{label}</span>
         {description && (
-          <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{description}</span>
+          <span className="text-xs text-muted-foreground mt-0.5">{description}</span>
         )}
       </div>
       <div className="relative shrink-0">
@@ -34,7 +34,7 @@ export function ToggleRow({ label, description, checked, onChange, disabled }: T
         <div
           className={clsx(
             "h-6 w-11 rounded-full transition-colors",
-            checked ? "bg-blue-500" : "bg-slate-200 dark:bg-slate-700"
+            checked ? "bg-blue-500" : "bg-muted"
           )}
         />
         <div

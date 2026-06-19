@@ -1,4 +1,6 @@
+import { Container } from "../../components/ui/Container";
 import { SectionHeader } from "../../components/public/SectionHeader";
+import { Seo } from "../../components/seo/Seo";
 
 export default function FaqPage() {
   const faqs = [
@@ -8,19 +10,20 @@ export default function FaqPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 py-24 pb-32 max-w-3xl">
+    <Container className="py-24 max-w-3xl">
+      <Seo title="FAQ" description="Frequently asked questions about StudentOS." />
       <SectionHeader 
         title="Frequently Asked Questions"
         description="Got questions? We've got answers."
       />
       <div className="mt-12 space-y-6">
         {faqs.map((faq, i) => (
-          <div key={i} className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
-            <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-50">{faq.question}</h3>
-            <p className="text-slate-600 dark:text-slate-400">{faq.answer}</p>
+          <div key={i} className="p-6 rounded-2xl border border-border bg-card">
+            <h3 className="text-lg font-semibold mb-2 text-foreground">{faq.question}</h3>
+            <p className="text-muted-foreground">{faq.answer}</p>
           </div>
         ))}
       </div>
-    </div>
+    </Container>
   );
 }

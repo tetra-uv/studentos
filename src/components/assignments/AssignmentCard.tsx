@@ -21,8 +21,8 @@ const DUE_DATE_COLORS: Record<string, string> = {
   overdue: "text-red-600 dark:text-red-400",
   today: "text-orange-600 dark:text-orange-400",
   soon: "text-amber-600 dark:text-amber-500",
-  upcoming: "text-slate-500 dark:text-slate-400",
-  none: "text-slate-400 dark:text-slate-500",
+  upcoming: "text-muted-foreground",
+  none: "text-muted-foreground",
 };
 
 export function AssignmentCard({ assignment, onEdit, onDeleteOverride }: AssignmentCardProps) {
@@ -60,7 +60,7 @@ export function AssignmentCard({ assignment, onEdit, onDeleteOverride }: Assignm
             onClick={handleToggleDone}
             aria-label={isDone ? "Mark as not done" : "Mark as done"}
             className={clsx(
-              "mt-0.5 h-4 w-4 shrink-0 rounded border-2 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-1",
+              "mt-0.5 h-4 w-4 shrink-0 rounded border-2 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1",
               isDone
                 ? "border-emerald-500 bg-emerald-500 dark:border-emerald-400 dark:bg-emerald-400"
                 : "border-slate-300 bg-white dark:border-slate-600 dark:bg-slate-900"
@@ -74,11 +74,11 @@ export function AssignmentCard({ assignment, onEdit, onDeleteOverride }: Assignm
           </button>
 
           <div className="min-w-0">
-            <p className={clsx("text-sm font-medium text-slate-900 dark:text-slate-50 leading-snug", isDone && "line-through")}>
+            <p className={clsx("text-sm font-medium text-muted-foreground leading-snug", isDone && "line-through")}>
               {assignment.title}
             </p>
             {assignment.subjectName && (
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{assignment.subjectName}</p>
+              <p className="text-xs text-muted-foreground mt-0.5">{assignment.subjectName}</p>
             )}
           </div>
         </div>
@@ -88,7 +88,7 @@ export function AssignmentCard({ assignment, onEdit, onDeleteOverride }: Assignm
           <div className="flex items-center gap-1 shrink-0 bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded-md border border-red-200 dark:border-red-800">
             <span className="text-xs font-semibold text-red-700 dark:text-red-400 whitespace-nowrap">Delete?</span>
             <Button variant="ghost" size="sm" onClick={handleDelete} className="h-6 px-1.5 text-red-600 hover:text-red-700 hover:bg-red-100 dark:hover:bg-red-900">Yes</Button>
-            <Button variant="ghost" size="sm" onClick={() => setIsConfirmingDelete(false)} className="h-6 px-1.5 hover:bg-slate-200">No</Button>
+            <Button variant="ghost" size="sm" onClick={() => setIsConfirmingDelete(false)} className="h-6 px-1.5 hover:bg-accent">No</Button>
           </div>
         ) : (
           <div className="flex gap-1 shrink-0">
@@ -96,7 +96,7 @@ export function AssignmentCard({ assignment, onEdit, onDeleteOverride }: Assignm
               <Edit2 className="h-4 w-4" />
             </Button>
             <Button variant="ghost" size="sm" onClick={handleDelete} aria-label="Delete assignment">
-              <Trash2 className="h-4 w-4 text-slate-400 hover:text-red-500" />
+              <Trash2 className="h-4 w-4 text-muted-foreground hover:text-red-500" />
             </Button>
           </div>
         )}

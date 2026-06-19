@@ -34,7 +34,7 @@ export function RecentSubjectsCard({ subjects }: RecentSubjectsCardProps) {
     return (
       <DashboardCard title="Recently Updated">
         <div className="px-5 py-8 text-center">
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-sm text-muted-foreground">
             No recent activity yet.
           </p>
         </div>
@@ -44,27 +44,27 @@ export function RecentSubjectsCard({ subjects }: RecentSubjectsCardProps) {
 
   return (
     <DashboardCard title="Recently Updated">
-      <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+      <ul className="divide-y divide-border">
         {recent.map((subject) => {
           const pct = calculateCurrentPercentage(subject.attendedClasses, subject.totalClasses);
           return (
             <li
               key={subject.id}
-              className="flex items-center justify-between gap-4 px-5 py-3.5 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+              className="flex items-center justify-between gap-4 px-5 py-3.5 cursor-pointer hover:bg-accent transition-colors"
               onClick={() => navigate("/attendance")}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => e.key === "Enter" && navigate("/attendance")}
             >
               <div className="min-w-0">
-                <p className="text-sm font-medium text-slate-900 dark:text-slate-50 truncate">
+                <p className="text-sm font-medium text-foreground truncate">
                   {subject.name}
                 </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
+                <p className="text-xs text-muted-foreground">
                   {timeAgo(subject.updatedAt)}
                 </p>
               </div>
-              <p className="text-sm tabular-nums font-medium text-slate-700 dark:text-slate-300 shrink-0">
+              <p className="text-sm tabular-nums font-medium text-muted-foreground shrink-0">
                 {formatPercentage(pct)}
               </p>
             </li>

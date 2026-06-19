@@ -17,14 +17,14 @@ export const DashboardCard = forwardRef<HTMLDivElement, DashboardCardProps>(
     <div
       ref={ref}
       className={clsx(
-        "rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900",
+        "rounded-xl border border-border bg-card shadow-sm",
         className
       )}
       {...props}
     >
       {title && (
-        <div className="px-5 pt-5 pb-3 border-b border-slate-100 dark:border-slate-800">
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+        <div className="px-5 pt-5 pb-3 border-b border-border">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             {title}
           </p>
         </div>

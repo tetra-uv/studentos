@@ -38,7 +38,7 @@ export function WarningSubjectsCard({ subjects }: WarningSubjectsCardProps) {
     return (
       <DashboardCard title="Subjects Needing Attention">
         <div className="px-5 py-8 text-center">
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-sm text-muted-foreground">
             All subjects are on track. Keep it up! 🎉
           </p>
         </div>
@@ -48,25 +48,25 @@ export function WarningSubjectsCard({ subjects }: WarningSubjectsCardProps) {
 
   return (
     <DashboardCard title="Subjects Needing Attention">
-      <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+      <ul className="divide-y divide-border">
         {sorted.map(({ subject, status, percentage }) => (
           <li
             key={subject.id}
-            className="flex flex-col gap-2 px-5 py-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+            className="flex flex-col gap-2 px-5 py-4 cursor-pointer hover:bg-accent transition-colors"
             onClick={() => navigate("/attendance")}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => e.key === "Enter" && navigate("/attendance")}
           >
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-slate-900 dark:text-slate-50 truncate pr-2">
+              <p className="text-sm font-medium text-foreground truncate pr-2">
                 {subject.name}
               </p>
               <StatusBadge status={status} />
             </div>
             <div className="flex items-center gap-3">
               <ProgressBar percentage={percentage} className="flex-1" />
-              <p className="text-xs tabular-nums text-slate-500 dark:text-slate-400 shrink-0">
+              <p className="text-xs tabular-nums text-muted-foreground shrink-0">
                 {formatPercentage(percentage)}
               </p>
             </div>

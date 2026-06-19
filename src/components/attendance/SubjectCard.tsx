@@ -67,7 +67,7 @@ export function SubjectCard({ subject, onEdit, onDeleteOverride }: SubjectCardPr
             <Button variant="ghost" size="sm" onClick={handleDelete} className="h-6 px-2 text-red-600 hover:text-red-700 hover:bg-red-100">
               Yes
             </Button>
-            <Button variant="ghost" size="sm" onClick={handleCancelDelete} className="h-6 px-2 text-slate-600 hover:bg-slate-200">
+            <Button variant="ghost" size="sm" onClick={handleCancelDelete} className="h-6 px-2 text-muted-foreground hover:bg-accent">
               No
             </Button>
           </div>
@@ -77,7 +77,7 @@ export function SubjectCard({ subject, onEdit, onDeleteOverride }: SubjectCardPr
               <Edit2 className="h-4 w-4" />
             </Button>
             <Button variant="ghost" size="sm" onClick={handleDelete}>
-              <Trash2 className="h-4 w-4 text-slate-400 hover:text-red-500" />
+              <Trash2 className="h-4 w-4 text-muted-foreground hover:text-red-500" />
             </Button>
           </div>
         )}

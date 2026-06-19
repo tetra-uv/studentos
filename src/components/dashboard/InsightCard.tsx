@@ -19,15 +19,15 @@ export function InsightCard({ insights }: InsightCardProps) {
 
   return (
     <DashboardCard title="Insights">
-      <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+      <ul className="divide-y divide-border">
         {insights.map((insight, index) => (
           <li key={index} className="flex items-start gap-3 px-5 py-4">
             {insight.icon && (
-              <span className="mt-0.5 shrink-0 text-slate-500 dark:text-slate-400">
+              <span className="mt-0.5 shrink-0 text-muted-foreground">
                 {insight.icon}
               </span>
             )}
-            <p className="text-sm text-slate-700 dark:text-slate-300">{insight.message}</p>
+            <p className="text-sm text-muted-foreground">{insight.message}</p>
           </li>
         ))}
       </ul>

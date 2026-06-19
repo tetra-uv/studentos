@@ -16,7 +16,7 @@ interface AssignmentFormProps {
 }
 
 const INPUT_CLASS =
-  "rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400 w-full";
+  "rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary w-full";
 
 export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
   const { addAssignment, updateAssignment } = useAssignmentStore();
@@ -99,7 +99,7 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {/* Title */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="as-title" className="text-sm font-medium text-slate-700 dark:text-slate-300">
+          <label htmlFor="as-title" className="text-sm font-medium text-muted-foreground">
             Title <span className="text-red-500">*</span>
           </label>
           <input
@@ -115,8 +115,8 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
 
         {/* Description */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="as-desc" className="text-sm font-medium text-slate-700 dark:text-slate-300">
-            Notes <span className="text-xs font-normal text-slate-400">(optional)</span>
+          <label htmlFor="as-desc" className="text-sm font-medium text-muted-foreground">
+            Notes <span className="text-xs font-normal text-muted-foreground">(optional)</span>
           </label>
           <textarea
             id="as-desc"
@@ -131,8 +131,8 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Subject */}
           <div className="flex flex-col gap-1">
-            <label htmlFor="as-subject" className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              Subject <span className="text-xs font-normal text-slate-400">(optional)</span>
+            <label htmlFor="as-subject" className="text-sm font-medium text-muted-foreground">
+              Subject <span className="text-xs font-normal text-muted-foreground">(optional)</span>
             </label>
             <select
               id="as-subject"
@@ -149,8 +149,8 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
 
           {/* Due Date */}
           <div className="flex flex-col gap-1">
-            <label htmlFor="as-due" className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              Due Date <span className="text-xs font-normal text-slate-400">(optional)</span>
+            <label htmlFor="as-due" className="text-sm font-medium text-muted-foreground">
+              Due Date <span className="text-xs font-normal text-muted-foreground">(optional)</span>
             </label>
             <input
               id="as-due"
@@ -163,7 +163,7 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
 
           {/* Priority */}
           <div className="flex flex-col gap-1">
-            <label htmlFor="as-priority" className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <label htmlFor="as-priority" className="text-sm font-medium text-muted-foreground">
               Priority
             </label>
             <select
@@ -181,7 +181,7 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
 
           {/* Status */}
           <div className="flex flex-col gap-1">
-            <label htmlFor="as-status" className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <label htmlFor="as-status" className="text-sm font-medium text-muted-foreground">
               Status
             </label>
             <select

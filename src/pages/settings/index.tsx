@@ -124,8 +124,8 @@ export default function SettingsPage() {
           <SettingsCard>
             <div className="flex items-center justify-between px-4 py-3">
               <div className="flex flex-col">
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Export All Data</span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Download a backup of all modules.</span>
+                <span className="text-sm font-medium text-muted-foreground">Export All Data</span>
+                <span className="text-xs text-muted-foreground mt-0.5">Download a backup of all modules.</span>
               </div>
               <button
                 onClick={handleExportAll}
@@ -151,9 +151,9 @@ export default function SettingsPage() {
         <SettingsSection title="About">
           <SettingsCard>
             <div className="px-4 py-4 flex flex-col gap-1">
-              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">StudentOS</span>
-              <span className="text-xs text-slate-500 dark:text-slate-400">Version 1.0 (Phase 1 Complete)</span>
-              <span className="text-xs text-slate-500 dark:text-slate-400 mt-2">
+              <span className="text-sm font-medium text-muted-foreground">StudentOS</span>
+              <span className="text-xs text-muted-foreground">Version 1.0 (Phase 1 Complete)</span>
+              <span className="text-xs text-muted-foreground mt-2">
                 Built with React, Tailwind v4, Zustand, and TypeScript.
               </span>
             </div>

@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 
 export function AppLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 selection:bg-slate-200 dark:selection:bg-slate-800">
+    <div className="flex h-screen overflow-hidden bg-muted text-muted-foreground selection:bg-slate-200 dark:selection:bg-slate-800">
       <Sidebar />
       <div className="flex flex-col flex-1 w-full relative">
         <Header />

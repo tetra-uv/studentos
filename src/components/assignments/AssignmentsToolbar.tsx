@@ -30,29 +30,29 @@ export function AssignmentsToolbar({
   onSortChange,
 }: AssignmentsToolbarProps) {
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:flex-wrap bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 mb-6">
+    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:flex-wrap bg-card p-4 rounded-lg border border-border mb-6">
       {/* Search */}
       <div className="relative flex-1 min-w-[180px] max-w-sm">
         <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-          <Search className="h-4 w-4 text-slate-400" />
+          <Search className="h-4 w-4 text-muted-foreground" />
         </div>
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           placeholder="Search assignments..."
-          className="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-300 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-50"
+          className="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-300 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-primary dark:border-slate-700 dark:bg-slate-950 dark:text-muted-foreground"
         />
       </div>
 
       <div className="flex flex-wrap items-center gap-4">
         {/* Status filter */}
         <div className="flex items-center gap-2">
-          <SlidersHorizontal className="h-4 w-4 text-slate-500 dark:text-slate-400 shrink-0" />
+          <SlidersHorizontal className="h-4 w-4 text-muted-foreground shrink-0" />
           <select
             value={statusFilter}
             onChange={(e) => onStatusFilterChange(e.target.value as StatusFilter)}
-            className="bg-transparent text-sm font-medium focus:outline-none text-slate-700 dark:text-slate-300"
+            className="bg-transparent text-sm font-medium focus:outline-none text-muted-foreground"
           >
             <option value="ALL">All Status</option>
             <option value="ACTIVE">Active</option>
@@ -67,7 +67,7 @@ export function AssignmentsToolbar({
           <select
             value={priorityFilter}
             onChange={(e) => onPriorityFilterChange(e.target.value as PriorityFilter)}
-            className="bg-transparent text-sm font-medium focus:outline-none text-slate-700 dark:text-slate-300"
+            className="bg-transparent text-sm font-medium focus:outline-none text-muted-foreground"
           >
             <option value="ALL">All Priority</option>
             <option value={AssignmentPriority.URGENT}>Urgent</option>
@@ -79,11 +79,11 @@ export function AssignmentsToolbar({
 
         {/* Sort */}
         <div className="flex items-center gap-2">
-          <ArrowUpDown className="h-4 w-4 text-slate-500 dark:text-slate-400 shrink-0" />
+          <ArrowUpDown className="h-4 w-4 text-muted-foreground shrink-0" />
           <select
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value as AssignmentSortOption)}
-            className="bg-transparent text-sm font-medium focus:outline-none text-slate-700 dark:text-slate-300"
+            className="bg-transparent text-sm font-medium focus:outline-none text-muted-foreground"
           >
             <option value="createdAt">Date Added</option>
             <option value="dueDate">Due Date</option>

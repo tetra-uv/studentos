@@ -24,7 +24,7 @@ const COLOR_OPTIONS: { label: string; value: string }[] = [
 ];
 
 const INPUT_CLASS =
-  "rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400 w-full";
+  "rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary w-full";
 
 export function HabitForm({ initialData, onClose }: HabitFormProps) {
   const { addHabit, updateHabit } = useHabitStore();
@@ -89,7 +89,7 @@ export function HabitForm({ initialData, onClose }: HabitFormProps) {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {/* Name */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="hab-name" className="text-sm font-medium text-slate-700 dark:text-slate-300">
+          <label htmlFor="hab-name" className="text-sm font-medium text-muted-foreground">
             Habit Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -105,8 +105,8 @@ export function HabitForm({ initialData, onClose }: HabitFormProps) {
 
         {/* Description */}
         <div className="flex flex-col gap-1">
-          <label htmlFor="hab-desc" className="text-sm font-medium text-slate-700 dark:text-slate-300">
-            Notes <span className="text-xs font-normal text-slate-400">(optional)</span>
+          <label htmlFor="hab-desc" className="text-sm font-medium text-muted-foreground">
+            Notes <span className="text-xs font-normal text-muted-foreground">(optional)</span>
           </label>
           <textarea
             id="hab-desc"
@@ -121,8 +121,8 @@ export function HabitForm({ initialData, onClose }: HabitFormProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Icon */}
           <div className="flex flex-col gap-1">
-            <label htmlFor="hab-icon" className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              Icon <span className="text-xs font-normal text-slate-400">(emoji, optional)</span>
+            <label htmlFor="hab-icon" className="text-sm font-medium text-muted-foreground">
+              Icon <span className="text-xs font-normal text-muted-foreground">(emoji, optional)</span>
             </label>
             <input
               id="hab-icon"
@@ -137,8 +137,8 @@ export function HabitForm({ initialData, onClose }: HabitFormProps) {
 
           {/* Color */}
           <div className="flex flex-col gap-1">
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              Accent Color <span className="text-xs font-normal text-slate-400">(optional)</span>
+            <span className="text-sm font-medium text-muted-foreground">
+              Accent Color <span className="text-xs font-normal text-muted-foreground">(optional)</span>
             </span>
             <div className="flex flex-wrap gap-2 pt-1" role="group" aria-label="Choose an accent color">
               {/* None option */}
@@ -146,8 +146,8 @@ export function HabitForm({ initialData, onClose }: HabitFormProps) {
                 type="button"
                 onClick={() => setColor("")}
                 className={clsx(
-                  "h-6 w-6 rounded-full border-2 bg-slate-100 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-slate-400",
-                  !color ? "border-slate-600 dark:border-slate-300" : "border-transparent"
+                  "h-6 w-6 rounded-full border-2 bg-muted focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary",
+                  !color ? "border-border" : "border-transparent"
                 )}
                 aria-label="No color"
                 title="No color"
@@ -158,8 +158,8 @@ export function HabitForm({ initialData, onClose }: HabitFormProps) {
                   type="button"
                   onClick={() => setColor(opt.value)}
                   className={clsx(
-                    "h-6 w-6 rounded-full border-2 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-slate-400",
-                    color === opt.value ? "border-slate-700 dark:border-slate-200 scale-110" : "border-transparent"
+                    "h-6 w-6 rounded-full border-2 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary",
+                    color === opt.value ? "border-border scale-110" : "border-transparent"
                   )}
                   style={{ backgroundColor: opt.value }}
                   aria-label={opt.label}

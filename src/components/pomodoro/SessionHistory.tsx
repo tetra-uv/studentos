@@ -15,8 +15,8 @@ export function SessionHistory({ sessions, onClear }: SessionHistoryProps) {
 
   if (recent.length === 0) {
     return (
-      <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6">
-        <p className="text-sm text-center text-slate-400 dark:text-slate-500">
+      <div className="rounded-xl border border-border bg-card p-6">
+        <p className="text-sm text-center text-muted-foreground">
           No sessions completed yet. Start a focus session!
         </p>
       </div>
@@ -24,19 +24,19 @@ export function SessionHistory({ sessions, onClear }: SessionHistoryProps) {
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 dark:border-slate-800">
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+    <div className="rounded-xl border border-border bg-card overflow-hidden">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Recent Sessions
         </p>
         <button
           onClick={onClear}
-          className="text-xs text-slate-400 hover:text-red-500 dark:hover:text-red-400 transition-colors focus:outline-none focus:underline"
+          className="text-xs text-muted-foreground hover:text-red-500 dark:hover:text-red-400 transition-colors focus:outline-none focus:underline"
         >
           Clear
         </button>
       </div>
-      <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+      <ul className="divide-y divide-border">
         {recent.map((session) => {
           const isFocus = session.mode === PomodoroMode.FOCUS;
           return (
@@ -45,11 +45,11 @@ export function SessionHistory({ sessions, onClear }: SessionHistoryProps) {
                 {isFocus ? <Clock className="h-4 w-4" /> : <Coffee className="h-4 w-4" />}
               </span>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
+                <p className="text-sm font-medium text-muted-foreground">
                   {isFocus ? "Focus" : "Break"} · {session.durationMinutes} min
                 </p>
               </div>
-              <p className="text-xs text-slate-400 dark:text-slate-500 shrink-0 tabular-nums">
+              <p className="text-xs text-muted-foreground shrink-0 tabular-nums">
                 {formatCompletedAt(session.completedAt)}
               </p>
             </li>

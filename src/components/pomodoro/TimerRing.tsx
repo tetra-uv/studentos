@@ -64,10 +64,10 @@ export function TimerRing({ timeRemaining, sessionTotal, mode }: TimerRingProps)
 
       {/* Center content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-        <span className="text-5xl font-semibold tabular-nums tracking-tight text-slate-900 dark:text-slate-50">
+        <span className="text-5xl font-semibold tabular-nums tracking-tight text-muted-foreground">
           {formatTime(timeRemaining)}
         </span>
-        <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
+        <span className="text-sm font-medium text-muted-foreground">
           {MODE_LABELS[mode]}
         </span>
       </div>

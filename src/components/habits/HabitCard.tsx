@@ -44,11 +44,11 @@ function SevenDayStrip({ statuses }: { statuses: DayStatus[] }) {
               i === 6 && "ring-2 ring-offset-1 ring-slate-300 dark:ring-slate-600",
               status === "done"
                 ? "bg-emerald-500 dark:bg-emerald-400"
-                : "bg-slate-200 dark:bg-slate-700"
+                : "bg-muted"
             )}
             title={status === "done" ? "Completed" : "Missed"}
           />
-          <span className="text-[9px] text-slate-400 dark:text-slate-500">{labels[i]}</span>
+          <span className="text-[9px] text-muted-foreground">{labels[i]}</span>
         </div>
       ))}
     </div>
@@ -98,7 +98,7 @@ export function HabitCard({ habit, onEdit, onDeleteOverride }: HabitCardProps) {
           <div className="flex items-center gap-1 shrink-0 bg-red-50 dark:bg-red-900/20 px-2 py-1 rounded-md border border-red-200 dark:border-red-800">
             <span className="text-xs font-semibold text-red-700 dark:text-red-400 whitespace-nowrap">Delete?</span>
             <Button variant="ghost" size="sm" onClick={handleDelete} className="h-6 px-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900">Yes</Button>
-            <Button variant="ghost" size="sm" onClick={() => setIsConfirmingDelete(false)} className="h-6 px-1.5 hover:bg-slate-200">No</Button>
+            <Button variant="ghost" size="sm" onClick={() => setIsConfirmingDelete(false)} className="h-6 px-1.5 hover:bg-accent">No</Button>
           </div>
         ) : (
           <div className="flex gap-1 shrink-0">
@@ -106,7 +106,7 @@ export function HabitCard({ habit, onEdit, onDeleteOverride }: HabitCardProps) {
               <Edit2 className="h-4 w-4" />
             </Button>
             <Button variant="ghost" size="sm" onClick={handleDelete} aria-label="Delete habit">
-              <Trash2 className="h-4 w-4 text-slate-400 hover:text-red-500" />
+              <Trash2 className="h-4 w-4 text-muted-foreground hover:text-red-500" />
             </Button>
           </div>
         )}
@@ -117,14 +117,14 @@ export function HabitCard({ habit, onEdit, onDeleteOverride }: HabitCardProps) {
         <div className="flex items-center gap-1 text-orange-500 dark:text-orange-400">
           <Flame className="h-4 w-4" />
           <span className="font-semibold tabular-nums">{streak}</span>
-          <span className="text-xs text-slate-500 dark:text-slate-400">streak</span>
+          <span className="text-xs text-muted-foreground">streak</span>
         </div>
-        <div className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
+        <div className="flex items-center gap-1 text-muted-foreground">
           <Trophy className="h-4 w-4" />
           <span className="font-semibold tabular-nums">{longest}</span>
-          <span className="text-xs text-slate-500 dark:text-slate-400">best</span>
+          <span className="text-xs text-muted-foreground">best</span>
         </div>
-        <div className="ml-auto text-xs text-slate-500 dark:text-slate-400 tabular-nums font-medium">
+        <div className="ml-auto text-xs text-muted-foreground tabular-nums font-medium">
           {pct}% last 30d
         </div>
       </div>
@@ -133,7 +133,7 @@ export function HabitCard({ habit, onEdit, onDeleteOverride }: HabitCardProps) {
       <SevenDayStrip statuses={statuses} />
 
       {/* Completion actions */}
-      <div className="flex gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div className="flex gap-2 pt-2 border-t border-border">
         <Button
           variant={todayDone ? "secondary" : "primary"}
           className={clsx("flex-1 text-sm", todayDone && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:hover:bg-emerald-900/50 border-0")}

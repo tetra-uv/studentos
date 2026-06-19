@@ -47,16 +47,16 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-            className="fixed inset-y-0 left-0 w-3/4 max-w-sm bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 shadow-xl flex flex-col"
+            className="fixed inset-y-0 left-0 w-3/4 max-w-sm bg-card border-r border-border shadow-xl flex flex-col"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation Menu"
           >
-            <div className="flex h-14 items-center justify-between px-4 border-b border-slate-200 dark:border-slate-800">
+            <div className="flex h-14 items-center justify-between px-4 border-b border-border">
               <Logo />
               <button
                 onClick={onClose}
-                className="p-2 -mr-2 text-slate-500 hover:text-slate-900 dark:hover:text-slate-50 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+                className="p-2 -mr-2 text-muted-foreground hover:text-muted-foreground dark:hover:text-muted-foreground rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
                 aria-label="Close Menu"
               >
                 <X className="h-5 w-5" />
@@ -67,7 +67,7 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
               {/* Other utility links could go here if we wanted */}
             </div>
 
-            <div className="p-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+            <div className="p-4 border-t border-border flex flex-col gap-1">
               {isInstallable && (
                 <button
                   onClick={() => {
@@ -87,8 +87,8 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                   clsx(
                     "flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400",
                     isActive
-                      ? "bg-slate-200/50 text-slate-900 dark:bg-slate-800/50 dark:text-slate-50"
-                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-50"
+                      ? "bg-slate-200/50 text-muted-foreground dark:bg-slate-800/50 dark:text-muted-foreground"
+                      : "text-muted-foreground hover:bg-accent hover:text-muted-foreground dark:hover:bg-accent dark:hover:text-muted-foreground"
                   )
                 }
               >

@@ -13,19 +13,22 @@ export function FeatureCard({ title, description, icon, delay = 0 }: FeatureCard
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay }}
-      className="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-sm hover:shadow-md transition-shadow"
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.4, delay, ease: "easeOut" }}
+      className="group relative p-8 rounded-3xl border border-border-strong bg-card shadow-sm hover:shadow-md hover:bg-accent/50 transition-all duration-300 overflow-hidden"
     >
-      <div className="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-6 text-slate-900 dark:text-slate-100">
-        {icon}
+      <div className="relative z-10">
+        <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center mb-6 text-foreground group-hover:scale-110 transition-transform duration-300">
+          {icon}
+        </div>
+        <h3 className="text-xl font-semibold tracking-tight text-foreground mb-2">
+          {title}
+        </h3>
+        <p className="text-muted-foreground leading-relaxed text-sm">
+          {description}
+        </p>
       </div>
-      <h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-slate-50">
-        {title}
-      </h3>
-      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-        {description}
-      </p>
+      <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(ellipse_at_center,var(--color-foreground)_0%,transparent_70%)]" />
     </motion.div>
   );
 }

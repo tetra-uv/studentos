@@ -100,7 +100,7 @@ export function SubjectForm({ initialData, onClose }: SubjectFormProps) {
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="text-sm font-medium text-slate-700 dark:text-slate-300">Subject Name</label>
+          <label htmlFor="name" className="text-sm font-medium text-muted-foreground">Subject Name</label>
           <input
             ref={nameInputRef}
             id="name"
@@ -111,14 +111,14 @@ export function SubjectForm({ initialData, onClose }: SubjectFormProps) {
               if (error) setError(null);
             }}
             placeholder="e.g. Mathematics"
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400"
+            className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
             required
           />
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="flex flex-col gap-1">
-            <label htmlFor="target" className="text-sm font-medium text-slate-700 dark:text-slate-300">Target (%)</label>
+            <label htmlFor="target" className="text-sm font-medium text-muted-foreground">Target (%)</label>
             <input
               id="target"
               type="number"
@@ -129,12 +129,12 @@ export function SubjectForm({ initialData, onClose }: SubjectFormProps) {
                 setTarget(e.target.value);
                 if (error) setError(null);
               }}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400"
+              className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="attended" className="text-sm font-medium text-slate-700 dark:text-slate-300">Attended</label>
+            <label htmlFor="attended" className="text-sm font-medium text-muted-foreground">Attended</label>
             <input
               id="attended"
               type="number"
@@ -144,12 +144,12 @@ export function SubjectForm({ initialData, onClose }: SubjectFormProps) {
                 setAttended(e.target.value);
                 if (error) setError(null);
               }}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400"
+              className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="total" className="text-sm font-medium text-slate-700 dark:text-slate-300">Total Classes</label>
+            <label htmlFor="total" className="text-sm font-medium text-muted-foreground">Total Classes</label>
             <input
               id="total"
               type="number"
@@ -159,7 +159,7 @@ export function SubjectForm({ initialData, onClose }: SubjectFormProps) {
                 setTotal(e.target.value);
                 if (error) setError(null);
               }}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-400"
+              className="rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               required
             />
           </div>

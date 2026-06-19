@@ -31,21 +31,21 @@ export function QuickActionsCard() {
 
   return (
     <DashboardCard title="Quick Actions">
-      <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+      <ul className="divide-y divide-border">
         {actions.map((action) => (
           <li key={action.id}>
             <button
               onClick={action.onClick}
-              className="flex w-full items-center gap-4 px-5 py-4 text-left hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-slate-400"
+              className="flex w-full items-center gap-4 px-5 py-4 text-left hover:bg-accent transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
             >
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
                 {action.icon}
               </span>
               <div>
-                <p className="text-sm font-medium text-slate-900 dark:text-slate-50">
+                <p className="text-sm font-medium text-foreground">
                   {action.label}
                 </p>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
+                <p className="text-xs text-muted-foreground">
                   {action.description}
                 </p>
               </div>
