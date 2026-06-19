@@ -6,6 +6,9 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
+  --color-surface: var(--surface);
+  --color-surface-sidebar: var(--surface-sidebar);
+  --color-surface-header: var(--surface-header);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
   --color-muted: var(--muted);
@@ -22,6 +25,9 @@
     --foreground: #0f172a;
     
     --card: #ffffff;
+    --surface: #ffffff;
+    --surface-sidebar: #fffdf0;
+    --surface-header: #fffdf0;
     
     --border: #0f172a;
     --border-strong: #0f172a;
@@ -41,14 +47,17 @@
     --foreground: #f8fafc;
     
     --card: #1e1e1e;
+    --surface: #242424;
+    --surface-sidebar: #171717;
+    --surface-header: #141414;
     
-    --border: #2a2a2a;
-    --border-strong: #333333;
+    --border: #343434;
+    --border-strong: #404040;
     
-    --muted: #2a2a2a;
+    --muted: #242424;
     --muted-foreground: #94a3b8;
     
-    --accent: #2a2a2a;
+    --accent: #242424;
     --accent-foreground: #f8fafc;
     
     --primary: #00f0ff;

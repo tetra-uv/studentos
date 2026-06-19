@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppLayout } from "./layouts/AppLayout";
 import { PublicLayout } from "./layouts/PublicLayout";
 import DashboardPage from "./pages/dashboard";
+import ProfilePage from "./pages/profile";
 import AttendancePage from "./pages/attendance";
 import AssignmentsPage from "./pages/assignments";
 import HabitsPage from "./pages/habits";
@@ -68,6 +69,7 @@ function App() {
 
         {/* App Routes */}
         <Route path={APP_ROUTES.DASHBOARD} element={<WithAppLayout><DashboardPage /></WithAppLayout>} />
+        <Route path={APP_ROUTES.PROFILE} element={<WithAppLayout><ProfilePage /></WithAppLayout>} />
         <Route path={APP_ROUTES.ATTENDANCE} element={<WithAppLayout><AttendancePage /></WithAppLayout>} />
         <Route path={APP_ROUTES.ASSIGNMENTS} element={<WithAppLayout><AssignmentsPage /></WithAppLayout>} />
         <Route path={APP_ROUTES.HABITS} element={<WithAppLayout><HabitsPage /></WithAppLayout>} />

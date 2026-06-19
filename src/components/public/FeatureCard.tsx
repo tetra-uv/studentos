@@ -14,8 +14,9 @@ export function FeatureCard({ title, description, icon, delay = 0 }: FeatureCard
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
+      whileHover={{ y: -2, scale: 1.01 }}
       transition={{ duration: 0.4, delay, ease: "easeOut" }}
-      className="group relative p-8 rounded-3xl border-2 dark:border border-border-strong bg-card shadow-sm hover:shadow-md hover:bg-accent/50 transition-all duration-300 overflow-hidden"
+      className="group relative p-8 rounded-3xl border-2 dark:border border-border-strong bg-card shadow-sm transition-all duration-300 hover:border-primary/50 overflow-hidden"
     >
       <div className="relative z-10">
         <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center mb-6 text-foreground group-hover:scale-110 transition-transform duration-300">

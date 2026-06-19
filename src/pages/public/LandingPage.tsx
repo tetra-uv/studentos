@@ -5,6 +5,7 @@ import { AnimatedSection } from "../../components/public/AnimatedSection";
 import { DeviceFrame } from "../../components/public/DeviceFrame";
 import { BookOpen, CheckSquare, Coffee, Clock } from "lucide-react";
 import { Seo } from "../../components/seo/Seo";
+import { motion } from "framer-motion";
 
 export default function LandingPage() {
   return (
@@ -141,32 +142,37 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
           <AnimatedSection direction="right" className="order-2 lg:order-1 flex justify-center">
-             <DeviceFrame type="mobile">
-               <div className="w-full h-full flex flex-col bg-background">
-                 <div className="p-6 pb-2 border-b-2 dark:border-b border-border-strong flex justify-between items-center">
-                   <div className="h-6 w-32 bg-foreground rounded-md" />
-                   <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">ST</div>
-                 </div>
-                 <div className="flex-1 p-4 space-y-4 bg-muted/30">
-                   <div className="h-32 w-full bg-card rounded-2xl shadow-sm border-2 dark:border border-border-strong flex p-4 gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex-shrink-0" />
-                      <div className="flex-1 space-y-2">
-                        <div className="h-4 w-24 bg-muted-foreground/20 rounded" />
-                        <div className="h-3 w-full bg-muted-foreground/10 rounded" />
-                        <div className="h-3 w-4/5 bg-muted-foreground/10 rounded" />
-                      </div>
+             <motion.div
+               animate={{ y: [-5, 5] }}
+               transition={{ duration: 7, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
+             >
+               <DeviceFrame type="mobile">
+                 <div className="w-full h-full flex flex-col bg-background">
+                   <div className="p-6 pb-2 border-b-2 dark:border-b border-border-strong flex justify-between items-center">
+                     <div className="h-6 w-32 bg-foreground rounded-md" />
+                     <div className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">ST</div>
                    </div>
-                   <div className="h-32 w-full bg-card rounded-2xl shadow-sm border-2 dark:border border-border-strong flex p-4 gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex-shrink-0" />
-                      <div className="flex-1 space-y-2">
-                        <div className="h-4 w-32 bg-muted-foreground/20 rounded" />
-                        <div className="h-3 w-full bg-muted-foreground/10 rounded" />
-                        <div className="h-3 w-2/3 bg-muted-foreground/10 rounded" />
-                      </div>
+                   <div className="flex-1 p-4 space-y-4 bg-muted/30">
+                     <div className="h-32 w-full bg-card rounded-2xl shadow-sm border-2 dark:border border-border-strong flex p-4 gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex-shrink-0" />
+                        <div className="flex-1 space-y-2">
+                          <div className="h-4 w-24 bg-muted-foreground/20 rounded" />
+                          <div className="h-3 w-full bg-muted-foreground/10 rounded" />
+                          <div className="h-3 w-4/5 bg-muted-foreground/10 rounded" />
+                        </div>
+                     </div>
+                     <div className="h-32 w-full bg-card rounded-2xl shadow-sm border-2 dark:border border-border-strong flex p-4 gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex-shrink-0" />
+                        <div className="flex-1 space-y-2">
+                          <div className="h-4 w-32 bg-muted-foreground/20 rounded" />
+                          <div className="h-3 w-full bg-muted-foreground/10 rounded" />
+                          <div className="h-3 w-2/3 bg-muted-foreground/10 rounded" />
+                        </div>
+                     </div>
                    </div>
                  </div>
-               </div>
-             </DeviceFrame>
+               </DeviceFrame>
+             </motion.div>
           </AnimatedSection>
           <AnimatedSection direction="left" className="order-1 lg:order-2">
             <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground mb-6">

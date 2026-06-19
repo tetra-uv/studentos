@@ -11,6 +11,7 @@ export const PUBLIC_ROUTES = {
 
 export const APP_ROUTES = {
   DASHBOARD: "/app",
+  PROFILE: "/profile",
   ATTENDANCE: "/app/attendance",
   ASSIGNMENTS: "/app/assignments",
   HABITS: "/app/habits",

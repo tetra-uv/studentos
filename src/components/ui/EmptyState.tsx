@@ -19,15 +19,19 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
       transition={{ duration: 0.4, ease: "easeOut" }}
       ref={ref as any}
       className={clsx(
-        "flex min-h-[300px] flex-col items-center justify-center rounded-3xl border border-dashed border-slate-200/60 bg-slate-50/50 p-8 text-center dark:border-slate-800/60 dark:bg-slate-900/30 shadow-sm",
+        "flex min-h-[300px] flex-col items-center justify-center rounded-3xl border border-dashed border-border bg-card p-8 text-center shadow-sm",
         className
       )}
       {...(props as any)}
     >
-      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-500 dark:bg-indigo-500/10 dark:text-indigo-400 ring-1 ring-inset ring-indigo-500/10 shadow-sm">
+      <motion.div 
+        animate={{ y: [-3, 3] }}
+        transition={{ duration: 4, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
+        className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-muted text-foreground ring-1 ring-inset ring-border shadow-sm"
+      >
         {icon}
-      </div>
-      <Text variant="h3" className="mb-2 text-slate-900 dark:text-slate-50 font-semibold tracking-tight text-xl">
+      </motion.div>
+      <Text variant="h3" className="mb-2 text-foreground font-semibold tracking-tight text-xl">
         {title}
       </Text>
       <Text variant="muted" className="mb-8 max-w-sm leading-relaxed">
