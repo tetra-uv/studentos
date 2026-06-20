@@ -38,9 +38,9 @@ const SHORTCUTS: ShortcutCategory[] = [
   {
     category: "Navigation",
     items: [
-      { keys: ["G", "D"], description: "Go to Dashboard" },
-      { keys: ["G", "A"], description: "Go to Attendance" },
-      { keys: ["G", "S"], description: "Go to Settings" },
+      { keys: ["G", "Then", "D"], description: "Go to Dashboard" },
+      { keys: ["G", "Then", "A"], description: "Go to Attendance" },
+      { keys: ["G", "Then", "P"], description: "Go to Pomodoro" },
     ],
   },
 ];

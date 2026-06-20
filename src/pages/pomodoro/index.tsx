@@ -4,6 +4,7 @@ import { TimerRing } from "../../components/pomodoro/TimerRing";
 import { TimerControls } from "../../components/pomodoro/TimerControls";
 import { ModeSelector } from "../../components/pomodoro/ModeSelector";
 import { SessionHistory } from "../../components/pomodoro/SessionHistory";
+import { TimerSettings } from "../../components/pomodoro/TimerSettings";
 import { usePomodoroStore } from "../../store/pomodoroStore";
 import { usePomodoro } from "../../hooks/usePomodoro";
 import { getTodayFocusMinutes, getTodayFocusCount } from "../../utils/pomodoro";
@@ -60,6 +61,12 @@ export default function PomodoroPage() {
             <p className="text-xs text-muted-foreground">focus today</p>
           </div>
         </div>
+
+        {/* Timer Settings */}
+        <TimerSettings 
+          settings={settings} 
+          onChange={(updates) => usePomodoroStore.getState().updateSettings(updates)} 
+        />
 
         {/* Session history */}
         <SessionHistory sessions={sessions} onClear={clearHistory} />

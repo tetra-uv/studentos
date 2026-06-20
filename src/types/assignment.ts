@@ -10,6 +10,7 @@ export interface Assignment {
   dueDate?: number;
   priority: AssignmentPriority;
   status: AssignmentStatus;
+  links?: string[];
   createdAt: number;
   updatedAt: number;
 }

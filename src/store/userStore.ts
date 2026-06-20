@@ -7,6 +7,7 @@ interface Workspace {
   id: string;
   name: string;
   icon?: string;
+  accentColor?: string;
 }
 
 interface UserState {
@@ -16,6 +17,10 @@ interface UserState {
   activeWorkspaceId: string;
   workspaces: Workspace[];
   setActiveWorkspace: (id: string) => void;
+  createWorkspace: (workspace: Workspace) => void;
+  updateWorkspace: (id: string, updates: Partial<Workspace>) => void;
+  deleteWorkspace: (id: string) => void;
+  reorderWorkspaces: (workspaces: Workspace[]) => void;
 }
 
 const DEFAULT_GUEST_PROFILE: UserProfile = {
@@ -27,18 +32,35 @@ const DEFAULT_GUEST_PROFILE: UserProfile = {
 };
 
 const DEFAULT_WORKSPACES: Workspace[] = [
-  { id: "ws-personal", name: "StudentOS Personal", icon: "🏠" },
-  { id: "ws-ml", name: "AI & ML Semester", icon: "🤖" },
-  { id: "ws-year2", name: "Second Year", icon: "📚" },
+  { id: "default", name: "My Workspace", icon: "📚" },
 ];
 
 export const useUserStore = create<UserState>()(
   persist(
     (set) => ({
       profile: DEFAULT_GUEST_PROFILE,
-      activeWorkspaceId: "ws-personal",
+      activeWorkspaceId: "default",
       workspaces: DEFAULT_WORKSPACES,
       setActiveWorkspace: (id) => set({ activeWorkspaceId: id }),
+      createWorkspace: (workspace) => set((state) => ({
+        workspaces: [...state.workspaces, workspace],
+      })),
+      updateWorkspace: (id, updates) => set((state) => ({
+        workspaces: state.workspaces.map((ws) => ws.id === id ? { ...ws, ...updates } : ws)
+      })),
+      deleteWorkspace: (id) => set((state) => {
+        const remaining = state.workspaces.filter((ws) => ws.id !== id);
+        // Ensure at least one workspace exists
+        if (remaining.length === 0) {
+          return state;
+        }
+        const newActiveId = state.activeWorkspaceId === id ? remaining[0].id : state.activeWorkspaceId;
+        return {
+          workspaces: remaining,
+          activeWorkspaceId: newActiveId
+        };
+      }),
+      reorderWorkspaces: (workspaces) => set({ workspaces }),
       updateProfile: (updates) =>
         set((state) => ({
           profile: state.profile

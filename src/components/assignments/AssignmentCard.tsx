@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Edit2, Trash2 } from "lucide-react";
+import { Edit2, Trash2, Link2, FileText, Code } from "lucide-react";
 import { clsx } from "clsx";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
@@ -116,6 +116,33 @@ export function AssignmentCard({ assignment, onEdit, onDeleteOverride }: Assignm
         <span className={clsx("text-xs font-medium", DUE_DATE_COLORS[dueDateStatus])}>
           {formatDueDate(assignment.dueDate)}
         </span>
+        
+        {assignment.links && assignment.links.length > 0 && (
+          <div className="flex items-center gap-2 ml-auto">
+            {assignment.links.map((link, idx) => {
+              let Icon = Link2;
+              let label = "Link";
+              if (link.includes("github.com")) { label = "GitHub"; }
+              else if (link.includes("drive.google.com")) { Icon = FileText; label = "Drive"; }
+              else if (link.includes("youtube.com") || link.includes("youtu.be")) { label = "YouTube"; }
+              else if (link.includes("leetcode.com")) { Icon = Code; label = "LeetCode"; }
+
+              return (
+                <a 
+                  key={idx}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-[10px] font-medium text-muted-foreground bg-muted hover:bg-muted-foreground/20 hover:text-foreground px-2 py-1 rounded-md transition-colors"
+                  title={link}
+                >
+                  <Icon className="w-3 h-3" />
+                  {label}
+                </a>
+              );
+            })}
+          </div>
+        )}
       </div>
     </Card>
   );

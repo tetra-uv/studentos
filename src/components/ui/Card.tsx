@@ -10,6 +10,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     <motion.div
       ref={ref}
       whileHover={whileHover ?? { y: -2, scale: 1.01 }}
+      whileTap={{ scale: 0.98 }}
       transition={transition ?? { duration: 0.2, ease: "easeOut" }}
       className={clsx(
         "rounded-2xl border-2 dark:border border-border-strong bg-card text-foreground shadow-sm hover:border-primary/50 transition-colors",

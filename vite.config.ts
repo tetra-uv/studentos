@@ -28,4 +28,24 @@ export default defineConfig({
       }
     })
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+            return 'react';
+          }
+          if (id.includes('node_modules/framer-motion/')) {
+            return 'motion';
+          }
+          if (id.includes('node_modules/react-router-dom/')) {
+            return 'router';
+          }
+          if (id.includes('node_modules/zustand/')) {
+            return 'zustand';
+          }
+        }
+      }
+    }
+  }
 })

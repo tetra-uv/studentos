@@ -36,7 +36,15 @@ export const usePomodoroStore = create<PomodoroState>()(
     }),
     { 
       name: "studentos-pomodoro-storage",
-      storage: createJSONStorage(() => activeStorageAdapter)
+      storage: createJSONStorage(() => activeStorageAdapter),
+      merge: (persistedState: any, currentState) => ({
+        ...currentState,
+        ...persistedState,
+        settings: {
+          ...currentState.settings,
+          ...(persistedState?.settings || {}),
+        },
+      }),
     }
   )
 );

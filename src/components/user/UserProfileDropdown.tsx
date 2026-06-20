@@ -87,7 +87,7 @@ export function UserProfileDropdown({ variant = "header" }: { variant?: "header"
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={clsx(
-          "transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20",
+          "transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 active:scale-[0.98]",
           variant === "header" 
             ? "flex items-center gap-2 pl-1 pr-3 py-1 rounded-xl border border-transparent hover:bg-muted/50"
             : "flex items-center justify-between w-full p-2 rounded-xl bg-card border border-border hover:border-border-strong shadow-sm hover:shadow-md"
@@ -149,7 +149,7 @@ export function UserProfileDropdown({ variant = "header" }: { variant?: "header"
                   key={idx}
                   onClick={item.action}
                   disabled={item.disabled}
-                  className="flex items-center justify-between w-full p-2 rounded-lg text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground disabled:opacity-50 disabled:hover:bg-transparent disabled:cursor-not-allowed transition-colors text-left"
+                  className="flex items-center justify-between w-full p-2 rounded-lg text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground disabled:opacity-50 disabled:hover:bg-transparent disabled:cursor-not-allowed transition-colors text-left active:scale-[0.98]"
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-muted-foreground">{item.icon}</span>
@@ -168,10 +168,13 @@ export function UserProfileDropdown({ variant = "header" }: { variant?: "header"
               {profile.isGuest ? (
                 <button
                   className="flex items-center gap-3 w-full p-2 rounded-lg text-sm font-medium text-primary hover:bg-primary/10 transition-colors text-left"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false);
+                    navigate(APP_ROUTES.LOGIN);
+                  }}
                 >
                   <LogIn className="w-4 h-4" />
-                  <span>Sign In (Soon)</span>
+                  <span>Sign In</span>
                 </button>
               ) : (
                 <button

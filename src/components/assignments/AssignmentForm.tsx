@@ -25,6 +25,7 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
   const [title, setTitle] = useState(initialData?.title || "");
   const [description, setDescription] = useState(initialData?.description || "");
   const [subjectId, setSubjectId] = useState(initialData?.subjectId || "");
+  const [links, setLinks] = useState<string[]>(initialData?.links || []);
   const [dueDate, setDueDate] = useState(timestampToDateInput(initialData?.dueDate));
   const [priority, setPriority] = useState<AssignmentPriority>(
     initialData?.priority || AssignmentPriority.MEDIUM
@@ -68,6 +69,7 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
         dueDate: dateInputToTimestamp(dueDate),
         priority,
         status,
+        links: links.length > 0 ? links : undefined,
       });
     } else {
       addAssignment({
@@ -78,6 +80,7 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
         dueDate: dateInputToTimestamp(dueDate),
         priority,
         status,
+        links: links.length > 0 ? links : undefined,
       });
     }
     onClose();
@@ -125,6 +128,21 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
             placeholder="Any additional notes..."
             rows={2}
             className={INPUT_CLASS + " resize-none"}
+          />
+        </div>
+
+        {/* Link Resource */}
+        <div className="flex flex-col gap-1">
+          <label htmlFor="as-link" className="text-sm font-medium text-muted-foreground">
+            Resource Link <span className="text-xs font-normal text-muted-foreground">(optional)</span>
+          </label>
+          <input
+            id="as-link"
+            type="url"
+            value={links[0] || ""}
+            onChange={(e) => setLinks(e.target.value ? [e.target.value] : [])}
+            placeholder="https://docs.google.com/..."
+            className={INPUT_CLASS}
           />
         </div>
 

@@ -8,14 +8,14 @@ import { ToggleRow } from "../../components/settings/ToggleRow";
 import { SelectRow } from "../../components/settings/SelectRow";
 import { DangerZone } from "../../components/settings/DangerZone";
 import { useAppStore } from "../../store/appStore";
-import { usePomodoroStore } from "../../store/pomodoroStore";
+
 import { useAttendanceStore } from "../../store/attendanceStore";
 import { useAssignmentStore } from "../../store/assignmentStore";
 import { useHabitStore } from "../../store/habitStore";
 
 export default function SettingsPage() {
   const { settings: appSettings, updateSettings: updateApp } = useAppStore();
-  const { settings: pomSettings, updateSettings: updatePom, clearHistory: clearPom } = usePomodoroStore();
+
   const { subjects, resetData: resetAttendance } = useAttendanceStore();
   const { assignments, deleteAssignment } = useAssignmentStore();
   const { habits, deleteHabit } = useHabitStore();
@@ -27,7 +27,7 @@ export default function SettingsPage() {
       attendance: subjects,
       assignments,
       habits,
-      pomodoro: usePomodoroStore.getState().sessions,
+      // pomodoro history is exported separately or can be fetched if needed, but for now omit to remove dependency
       exportedAt: new Date().toISOString(),
       version: "1.0",
     };
@@ -47,7 +47,7 @@ export default function SettingsPage() {
     resetAttendance();
     assignments.forEach((a) => deleteAssignment(a.id));
     habits.forEach((h) => deleteHabit(h.id));
-    clearPom();
+    // clearPom();
     setToastMessage("All data has been reset");
   };
 
@@ -89,35 +89,6 @@ export default function SettingsPage() {
           </SettingsCard>
         </SettingsSection>
 
-        {/* Pomodoro */}
-        <SettingsSection title="Pomodoro Timer" description="Configure focus and break durations.">
-          <SettingsCard>
-            <SelectRow
-              label="Focus Duration"
-              value={String(pomSettings.focusMinutes)}
-              onChange={(v) => updatePom({ focusMinutes: Number(v) })}
-              options={[15, 20, 25, 30, 45, 60, 90].map((n) => ({ label: `${n} min`, value: String(n) }))}
-            />
-            <SelectRow
-              label="Break Duration"
-              value={String(pomSettings.breakMinutes)}
-              onChange={(v) => updatePom({ breakMinutes: Number(v) })}
-              options={[5, 10, 15, 20, 30].map((n) => ({ label: `${n} min`, value: String(n) }))}
-            />
-            <ToggleRow
-              label="Auto-start Break"
-              description="Automatically start the break timer when focus ends."
-              checked={pomSettings.autoStartBreak}
-              onChange={(v) => updatePom({ autoStartBreak: v })}
-            />
-            <ToggleRow
-              label="Completion Sound"
-              description="Play a subtle tone when the timer finishes."
-              checked={pomSettings.soundEnabled}
-              onChange={(v) => updatePom({ soundEnabled: v })}
-            />
-          </SettingsCard>
-        </SettingsSection>
 
         {/* Data Management */}
         <SettingsSection title="Data Management" description="Export your data or reset the application.">

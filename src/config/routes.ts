@@ -15,8 +15,11 @@ export const APP_ROUTES = {
   ATTENDANCE: "/app/attendance",
   ASSIGNMENTS: "/app/assignments",
   HABITS: "/app/habits",
+  TODO: "/app/todo",
+  CALENDAR: "/app/calendar",
   POMODORO: "/app/pomodoro",
   SETTINGS: "/app/settings",
+  LOGIN: "/login",
 } as const;
 
 export const LEGACY_ROUTES = {

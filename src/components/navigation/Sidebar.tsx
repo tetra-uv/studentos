@@ -1,6 +1,6 @@
 import { Logo } from "../ui/Logo";
 import { NavLink, useLocation } from "react-router-dom";
-import { LayoutDashboard, CheckSquare, FileText, Activity, Clock, Settings, Download } from "lucide-react";
+import { LayoutDashboard, CheckSquare, FileText, Activity, Clock, Settings, Download, ListTodo, CalendarDays } from "lucide-react";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
 import { APP_ROUTES } from "../../config/routes";
@@ -12,6 +12,8 @@ const NAV_ITEMS = [
   { name: "Dashboard", path: APP_ROUTES.DASHBOARD, icon: LayoutDashboard },
   { name: "Attendance", path: APP_ROUTES.ATTENDANCE, icon: CheckSquare },
   { name: "Assignments", path: APP_ROUTES.ASSIGNMENTS, icon: FileText },
+  { name: "To-Do", path: APP_ROUTES.TODO, icon: ListTodo },
+  { name: "Calendar", path: APP_ROUTES.CALENDAR, icon: CalendarDays },
   { name: "Habits", path: APP_ROUTES.HABITS, icon: Activity },
   { name: "Pomodoro", path: APP_ROUTES.POMODORO, icon: Clock },
 ];

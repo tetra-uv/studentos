@@ -12,6 +12,7 @@ import { InsightCard } from "../../components/dashboard/InsightCard";
 import { WarningSubjectsCard } from "../../components/dashboard/WarningSubjectsCard";
 import { RecentSubjectsCard } from "../../components/dashboard/RecentSubjectsCard";
 import { QuickActionsCard } from "../../components/dashboard/QuickActionsCard";
+import { TodoWidget } from "../../components/dashboard/TodoWidget";
 
 import { useAttendanceStore } from "../../store/attendanceStore";
 import { AttendanceStatus } from "../../types/attendanceStatus";
@@ -95,17 +96,25 @@ export default function DashboardPage() {
     return (
       <Container>
         <PageHeader title="Dashboard" description="Your student overview." />
-        <EmptyState
-          icon={<BookOpen className="h-6 w-6" />}
-          title="Nothing here yet"
-          description="Add your subjects in Attendance to start seeing your overview here."
-          action={
-            <Button onClick={() => navigate("/app/attendance")}>
-              <CheckSquare className="h-4 w-4 mr-2" />
-              Go to Attendance
-            </Button>
-          }
-        />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2">
+            <EmptyState
+              icon={<BookOpen className="h-6 w-6" />}
+              title="Nothing here yet"
+              description="Add your subjects in Attendance to start seeing your overview here."
+              action={
+                <Button onClick={() => navigate("/app/attendance")}>
+                  <CheckSquare className="h-4 w-4 mr-2" />
+                  Go to Attendance
+                </Button>
+              }
+            />
+          </div>
+          <div className="flex flex-col gap-6">
+            <TodoWidget />
+            <QuickActionsCard />
+          </div>
+        </div>
       </Container>
     );
   }
@@ -160,6 +169,7 @@ export default function DashboardPage() {
 
         {/* Right column — full width on mobile, 1/3 on desktop */}
         <div className="flex flex-col gap-6">
+          <TodoWidget />
           <QuickActionsCard />
           <RecentSubjectsCard subjects={subjects} />
         </div>

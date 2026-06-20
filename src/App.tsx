@@ -1,29 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import type { ReactNode } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppLayout } from "./layouts/AppLayout";
 import { PublicLayout } from "./layouts/PublicLayout";
-import DashboardPage from "./pages/dashboard";
-import ProfilePage from "./pages/profile";
-import AttendancePage from "./pages/attendance";
-import AssignmentsPage from "./pages/assignments";
-import HabitsPage from "./pages/habits";
-import PomodoroPage from "./pages/pomodoro";
-import SettingsPage from "./pages/settings";
-import { useAppStore } from "./store/appStore";
+const DashboardPage = lazy(() => import("./pages/dashboard"));
+const ProfilePage = lazy(() => import("./pages/profile"));
+const AttendancePage = lazy(() => import("./pages/attendance"));
+const AssignmentsPage = lazy(() => import("./pages/assignments"));
+const HabitsPage = lazy(() => import("./pages/habits"));
+const TodoPage = lazy(() => import("./pages/todo"));
+const CalendarPage = lazy(() => import("./pages/calendar"));
+const PomodoroPage = lazy(() => import("./pages/pomodoro"));
+const SettingsPage = lazy(() => import("./pages/settings"));
+const AuthPage = lazy(() => import("./pages/auth"));
 
 // Public Pages
-import LandingPage from "./pages/public/LandingPage";
-import AboutPage from "./pages/public/AboutPage";
-import FeaturesPage from "./pages/public/FeaturesPage";
-import RoadmapPage from "./pages/public/RoadmapPage";
-import ChangelogPage from "./pages/public/ChangelogPage";
-import FaqPage from "./pages/public/FaqPage";
-import PrivacyPage from "./pages/public/PrivacyPage";
-import ContactPage from "./pages/public/ContactPage";
+const LandingPage = lazy(() => import("./pages/public/LandingPage"));
+const AboutPage = lazy(() => import("./pages/public/AboutPage"));
+const FeaturesPage = lazy(() => import("./pages/public/FeaturesPage"));
+const RoadmapPage = lazy(() => import("./pages/public/RoadmapPage"));
+const ChangelogPage = lazy(() => import("./pages/public/ChangelogPage"));
+const FaqPage = lazy(() => import("./pages/public/FaqPage"));
+const PrivacyPage = lazy(() => import("./pages/public/PrivacyPage"));
+const ContactPage = lazy(() => import("./pages/public/ContactPage"));
 
 // Routes config
 import { PUBLIC_ROUTES, APP_ROUTES, LEGACY_ROUTES } from "./config/routes";
+import { useAppStore } from "./store/appStore";
 
 const WithAppLayout = ({ children }: { children: ReactNode }) => (
   <AppLayout>{children}</AppLayout>
@@ -56,7 +59,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
+      <Suspense fallback={<div className="flex h-screen items-center justify-center text-slate-500">Loading...</div>}>
+        <Routes>
         {/* Public Routes */}
         <Route path={PUBLIC_ROUTES.HOME} element={<WithPublicLayout><LandingPage /></WithPublicLayout>} />
         <Route path={PUBLIC_ROUTES.ABOUT} element={<WithPublicLayout><AboutPage /></WithPublicLayout>} />
@@ -73,8 +77,13 @@ function App() {
         <Route path={APP_ROUTES.ATTENDANCE} element={<WithAppLayout><AttendancePage /></WithAppLayout>} />
         <Route path={APP_ROUTES.ASSIGNMENTS} element={<WithAppLayout><AssignmentsPage /></WithAppLayout>} />
         <Route path={APP_ROUTES.HABITS} element={<WithAppLayout><HabitsPage /></WithAppLayout>} />
+        <Route path={APP_ROUTES.TODO} element={<WithAppLayout><TodoPage /></WithAppLayout>} />
+        <Route path={APP_ROUTES.CALENDAR} element={<WithAppLayout><CalendarPage /></WithAppLayout>} />
         <Route path={APP_ROUTES.POMODORO} element={<WithAppLayout><PomodoroPage /></WithAppLayout>} />
         <Route path={APP_ROUTES.SETTINGS} element={<WithAppLayout><SettingsPage /></WithAppLayout>} />
+
+        {/* Auth Route */}
+        <Route path={APP_ROUTES.LOGIN} element={<AuthPage />} />
 
         {/* Legacy Redirects */}
         <Route path={LEGACY_ROUTES.ATTENDANCE} element={<Navigate to={APP_ROUTES.ATTENDANCE} replace />} />
@@ -83,6 +92,7 @@ function App() {
         <Route path={LEGACY_ROUTES.POMODORO} element={<Navigate to={APP_ROUTES.POMODORO} replace />} />
         <Route path={LEGACY_ROUTES.SETTINGS} element={<Navigate to={APP_ROUTES.SETTINGS} replace />} />
       </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
