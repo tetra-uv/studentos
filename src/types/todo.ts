@@ -5,6 +5,7 @@ export interface Todo {
   id: string;
   title: string;
   description?: string;
+  courseId?: string;
   priority: TodoPriority;
   status: TodoStatus;
   dueDate?: number;

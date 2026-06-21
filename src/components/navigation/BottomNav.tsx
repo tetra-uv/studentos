@@ -1,14 +1,16 @@
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, CheckSquare, FileText, Activity, Clock } from "lucide-react";
+import { LayoutDashboard, CheckSquare, FileText, Activity, Clock, BookOpen, GraduationCap } from "lucide-react";
 import { clsx } from "clsx";
 import { APP_ROUTES } from "../../config/routes";
 
 const NAV_ITEMS = [
   { name: "Home", path: APP_ROUTES.DASHBOARD, icon: LayoutDashboard },
+  { name: "Courses", path: APP_ROUTES.COURSES, icon: GraduationCap },
   { name: "Attend", path: APP_ROUTES.ATTENDANCE, icon: CheckSquare },
   { name: "Tasks", path: APP_ROUTES.ASSIGNMENTS, icon: FileText },
   { name: "Habits", path: APP_ROUTES.HABITS, icon: Activity },
   { name: "Timer", path: APP_ROUTES.POMODORO, icon: Clock },
+  { name: "Study", path: APP_ROUTES.STUDY, icon: BookOpen },
 ];
 
 export function BottomNav() {

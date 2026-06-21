@@ -4,12 +4,14 @@ import { useAssignmentStore } from "../store/assignmentStore";
 import { usePomodoroStore } from "../store/pomodoroStore";
 import { AssignmentStatus } from "../types/assignmentStatus";
 import { PomodoroMode } from "../types/pomodoroMode";
+import { useStudyStore } from "../store/studyStore";
 import type { CalendarEvent } from "../types/calendar";
 
 export function useCalendarEvents(): CalendarEvent[] {
   const { todos } = useTodoStore();
   const { assignments } = useAssignmentStore();
-  const { sessions } = usePomodoroStore();
+  const { sessions: pomodoroSessions } = usePomodoroStore();
+  const { sessions: studySessions } = useStudyStore();
 
   return useMemo(() => {
     const events: CalendarEvent[] = [];
@@ -49,7 +51,7 @@ export function useCalendarEvents(): CalendarEvent[] {
     });
 
     // Map Pomodoros
-    sessions.forEach((session) => {
+    pomodoroSessions.forEach((session) => {
       events.push({
         id: `pomodoro-${session.id}`,
         title: `${session.mode === PomodoroMode.FOCUS ? "Focus" : "Break"} Session (${session.durationMinutes}m)`,
@@ -60,6 +62,19 @@ export function useCalendarEvents(): CalendarEvent[] {
       });
     });
 
+    // Map Study Sessions
+    studySessions.forEach((session) => {
+      events.push({
+        id: `study-${session.id}`,
+        title: `Study: ${session.course} (${session.durationMinutes}m)`,
+        date: session.date,
+        type: "study",
+        color: "violet",
+        isCompleted: true,
+        description: session.title,
+      });
+    });
+
     return events;
-  }, [todos, assignments, sessions]);
+  }, [todos, assignments, pomodoroSessions, studySessions]);
 }

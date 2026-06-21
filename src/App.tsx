@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AppLayout } from "./layouts/AppLayout";
 import { PublicLayout } from "./layouts/PublicLayout";
 const DashboardPage = lazy(() => import("./pages/dashboard"));
+const CoursesPage = lazy(() => import("./pages/courses"));
 const ProfilePage = lazy(() => import("./pages/profile"));
 const AttendancePage = lazy(() => import("./pages/attendance"));
 const AssignmentsPage = lazy(() => import("./pages/assignments"));
@@ -11,7 +12,15 @@ const HabitsPage = lazy(() => import("./pages/habits"));
 const TodoPage = lazy(() => import("./pages/todo"));
 const CalendarPage = lazy(() => import("./pages/calendar"));
 const PomodoroPage = lazy(() => import("./pages/pomodoro"));
+const StudyPage = lazy(() => import("./pages/study"));
 const SettingsPage = lazy(() => import("./pages/settings"));
+
+// Analytics Pages
+const AnalyticsAttendancePage = lazy(() => import("./pages/analytics/attendance"));
+const AnalyticsHabitsPage = lazy(() => import("./pages/analytics/habits"));
+const AnalyticsPomodoroPage = lazy(() => import("./pages/analytics/pomodoro"));
+const AnalyticsTasksPage = lazy(() => import("./pages/analytics/tasks"));
+const AnalyticsStudyPage = lazy(() => import("./pages/analytics/study"));
 const AuthPage = lazy(() => import("./pages/auth"));
 
 // Public Pages
@@ -27,6 +36,7 @@ const ContactPage = lazy(() => import("./pages/public/ContactPage"));
 // Routes config
 import { PUBLIC_ROUTES, APP_ROUTES, LEGACY_ROUTES } from "./config/routes";
 import { useAppStore } from "./store/appStore";
+import { MigrationManager } from "./components/migration/MigrationManager";
 
 const WithAppLayout = ({ children }: { children: ReactNode }) => (
   <AppLayout>{children}</AppLayout>
@@ -59,6 +69,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <MigrationManager />
       <Suspense fallback={<div className="flex h-screen items-center justify-center text-slate-500">Loading...</div>}>
         <Routes>
         {/* Public Routes */}
@@ -73,6 +84,7 @@ function App() {
 
         {/* App Routes */}
         <Route path={APP_ROUTES.DASHBOARD} element={<WithAppLayout><DashboardPage /></WithAppLayout>} />
+        <Route path={APP_ROUTES.COURSES} element={<WithAppLayout><CoursesPage /></WithAppLayout>} />
         <Route path={APP_ROUTES.PROFILE} element={<WithAppLayout><ProfilePage /></WithAppLayout>} />
         <Route path={APP_ROUTES.ATTENDANCE} element={<WithAppLayout><AttendancePage /></WithAppLayout>} />
         <Route path={APP_ROUTES.ASSIGNMENTS} element={<WithAppLayout><AssignmentsPage /></WithAppLayout>} />
@@ -80,7 +92,15 @@ function App() {
         <Route path={APP_ROUTES.TODO} element={<WithAppLayout><TodoPage /></WithAppLayout>} />
         <Route path={APP_ROUTES.CALENDAR} element={<WithAppLayout><CalendarPage /></WithAppLayout>} />
         <Route path={APP_ROUTES.POMODORO} element={<WithAppLayout><PomodoroPage /></WithAppLayout>} />
+        <Route path={APP_ROUTES.STUDY} element={<WithAppLayout><StudyPage /></WithAppLayout>} />
         <Route path={APP_ROUTES.SETTINGS} element={<WithAppLayout><SettingsPage /></WithAppLayout>} />
+
+        {/* Analytics Routes */}
+        <Route path={APP_ROUTES.ANALYTICS_ATTENDANCE} element={<WithAppLayout><AnalyticsAttendancePage /></WithAppLayout>} />
+        <Route path={APP_ROUTES.ANALYTICS_HABITS} element={<WithAppLayout><AnalyticsHabitsPage /></WithAppLayout>} />
+        <Route path={APP_ROUTES.ANALYTICS_POMODORO} element={<WithAppLayout><AnalyticsPomodoroPage /></WithAppLayout>} />
+        <Route path={APP_ROUTES.ANALYTICS_TASKS} element={<WithAppLayout><AnalyticsTasksPage /></WithAppLayout>} />
+        <Route path={APP_ROUTES.ANALYTICS_STUDY} element={<WithAppLayout><AnalyticsStudyPage /></WithAppLayout>} />
 
         {/* Auth Route */}
         <Route path={APP_ROUTES.LOGIN} element={<AuthPage />} />

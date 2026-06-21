@@ -7,6 +7,7 @@ export interface Assignment {
   description?: string;
   subjectId?: string;
   subjectName?: string;
+  courseId?: string;
   dueDate?: number;
   priority: AssignmentPriority;
   status: AssignmentStatus;

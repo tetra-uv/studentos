@@ -4,15 +4,16 @@ import { motion } from "framer-motion";
 interface StatCardProps {
   title: string;
   value: string | number;
-  icon: ReactNode;
+  icon?: ReactNode;
   trend?: {
     value: string;
     isPositive: boolean;
   };
   delay?: number;
+  subtext?: string;
 }
 
-export function StatCard({ title, value, icon, trend, delay = 0 }: StatCardProps) {
+export function StatCard({ title, value, icon, trend, delay = 0, subtext }: StatCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -38,6 +39,11 @@ export function StatCard({ title, value, icon, trend, delay = 0 }: StatCardProps
           </span>
         )}
       </div>
+      {subtext && (
+        <p className="mt-2 text-xs text-slate-500 dark:text-slate-400">
+          {subtext}
+        </p>
+      )}
     </motion.div>
   );
 }

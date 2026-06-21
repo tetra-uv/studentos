@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import type { CalendarEvent } from "../../types/calendar";
-import { CheckCircle2, Clock, FileText } from "lucide-react";
+import { CheckCircle2, Clock, FileText, BookOpen } from "lucide-react";
 
 interface EventCardProps {
   event: CalendarEvent;
@@ -11,12 +11,14 @@ const colorMap: Record<string, string> = {
   indigo: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-900/50",
   blue: "bg-blue-500/10 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-900/50",
   emerald: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900/50",
+  violet: "bg-violet-500/10 text-violet-700 dark:text-violet-300 border-violet-200 dark:border-violet-900/50",
 };
 
 const IconMap = {
   task: CheckCircle2,
   assignment: FileText,
   pomodoro: Clock,
+  study: BookOpen,
 };
 
 export function EventCard({ event, isCompact = false }: EventCardProps) {

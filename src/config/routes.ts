@@ -11,15 +11,22 @@ export const PUBLIC_ROUTES = {
 
 export const APP_ROUTES = {
   DASHBOARD: "/app",
-  PROFILE: "/profile",
+  COURSES: "/app/courses",
+  PROFILE: "/app/profile",
   ATTENDANCE: "/app/attendance",
   ASSIGNMENTS: "/app/assignments",
   HABITS: "/app/habits",
   TODO: "/app/todo",
   CALENDAR: "/app/calendar",
   POMODORO: "/app/pomodoro",
+  STUDY: "/app/study",
   SETTINGS: "/app/settings",
   LOGIN: "/login",
+  ANALYTICS_ATTENDANCE: "/app/analytics/attendance",
+  ANALYTICS_HABITS: "/app/analytics/habits",
+  ANALYTICS_POMODORO: "/app/analytics/pomodoro",
+  ANALYTICS_TASKS: "/app/analytics/tasks",
+  ANALYTICS_STUDY: "/app/analytics/study",
 } as const;
 
 export const LEGACY_ROUTES = {

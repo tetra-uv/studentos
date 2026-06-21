@@ -4,7 +4,7 @@ import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
 import { Text } from "../ui/Text";
 import { useAssignmentStore } from "../../store/assignmentStore";
-import { useAttendanceStore } from "../../store/attendanceStore";
+import { useCourseStore } from "../../store/courseStore";
 import { dateInputToTimestamp, timestampToDateInput } from "../../utils/assignments";
 import { AssignmentPriority } from "../../types/assignmentPriority";
 import { AssignmentStatus } from "../../types/assignmentStatus";
@@ -20,11 +20,11 @@ const INPUT_CLASS =
 
 export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
   const { addAssignment, updateAssignment } = useAssignmentStore();
-  const { subjects } = useAttendanceStore();
+  const { courses } = useCourseStore();
 
   const [title, setTitle] = useState(initialData?.title || "");
   const [description, setDescription] = useState(initialData?.description || "");
-  const [subjectId, setSubjectId] = useState(initialData?.subjectId || "");
+  const [courseId, setCourseId] = useState(initialData?.courseId || initialData?.subjectId || "");
   const [links, setLinks] = useState<string[]>(initialData?.links || []);
   const [dueDate, setDueDate] = useState(timestampToDateInput(initialData?.dueDate));
   const [priority, setPriority] = useState<AssignmentPriority>(
@@ -58,14 +58,14 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
     e.preventDefault();
     if (!validate()) return;
 
-    const selectedSubject = subjects.find((s) => s.id === subjectId);
+    const selectedCourse = courses.find((c) => c.id === courseId);
 
     if (initialData) {
       updateAssignment(initialData.id, {
         title: title.trim(),
         description: description.trim() || undefined,
-        subjectId: subjectId || undefined,
-        subjectName: selectedSubject?.name,
+        courseId: courseId || undefined,
+        subjectName: selectedCourse?.name || initialData.subjectName, // Keep legacy fallback
         dueDate: dateInputToTimestamp(dueDate),
         priority,
         status,
@@ -75,8 +75,8 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
       addAssignment({
         title: title.trim(),
         description: description.trim() || undefined,
-        subjectId: subjectId || undefined,
-        subjectName: selectedSubject?.name,
+        courseId: courseId || undefined,
+        subjectName: selectedCourse?.name,
         dueDate: dateInputToTimestamp(dueDate),
         priority,
         status,
@@ -147,20 +147,20 @@ export function AssignmentForm({ initialData, onClose }: AssignmentFormProps) {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {/* Subject */}
+          {/* Course */}
           <div className="flex flex-col gap-1">
-            <label htmlFor="as-subject" className="text-sm font-medium text-muted-foreground">
-              Subject <span className="text-xs font-normal text-muted-foreground">(optional)</span>
+            <label htmlFor="as-course" className="text-sm font-medium text-muted-foreground">
+              Course <span className="text-xs font-normal text-muted-foreground">(optional)</span>
             </label>
             <select
-              id="as-subject"
-              value={subjectId}
-              onChange={(e) => setSubjectId(e.target.value)}
+              id="as-course"
+              value={courseId}
+              onChange={(e) => setCourseId(e.target.value)}
               className={INPUT_CLASS}
             >
               <option value="">None</option>
-              {subjects.map((s) => (
-                <option key={s.id} value={s.id}>{s.name}</option>
+              {courses.map((c) => (
+                <option key={c.id} value={c.id}>{c.name}</option>
               ))}
             </select>
           </div>
